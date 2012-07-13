@@ -81,24 +81,43 @@
             value.getTime() == value.valueOf();
     }
 
+    /**
+     * @name samsam.isNaN
+     * @param Object value
+     *
+     * Returns ``true`` if passed in value is ``NaN``. Unlike the globally
+     * available ``isNaN``, this method does not attempt to coerce its
+     * argument to a number, instead it checks that the number is
+     * equal to itself.
+     */
     function isNaN(value) {
         return value !== value;
+    }
+
+    /**
+     * @name samsam.isNegZero
+     * @param Object value
+     *
+     * Returns ``true`` if ``value`` is ``-0``.
+     */
+    function isNegZero(value) {
+        return value === 0 && 1 / value === -Infinity;
     }
 
     /**
      * @name samsam.equal
      * @param Object obj1
      * @param Object obj2
-     * 
+     *
      * Returns ``true`` if two objects are strictly equal. Compared to
      * ``===`` there are two exceptions:
-     * 
+     *
      *   - NaN is considered equal to NaN
      *   - -0 and +0 are not considered equal
      */
     function identical(obj1, obj2) {
         if (obj1 === obj2 || (isNaN(obj1) && isNaN(obj2))) {
-            return obj1 !== 0 || 1 / obj1 === 1 / obj2;
+            return obj1 !== 0 || isNegZero(obj1) === isNegZero(obj2);
         }
     }
 
@@ -237,6 +256,8 @@
         isArguments: isArguments,
         isElement: isElement,
         isDate: isDate,
+        isNaN: isNaN,
+        isNegZero: isNegZero,
         identical: identical,
         deepEqual: deepEqual,
         match: match

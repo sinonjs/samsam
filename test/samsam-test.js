@@ -69,6 +69,18 @@ if (typeof module === "object" && typeof require === "function") {
         fail("primitive", 42);
     });
 
+    tests("isNaN", function (pass, fail) {
+        pass("NaN", NaN);
+        fail("number", 42);
+        fail("object", {});
+    });
+
+    tests("isNegZero", function (pass, fail) {
+        pass("-0", -0);
+        fail("0", 0);
+        fail("object", {});
+    });
+
     tests("identical", function (pass, fail) {
         var object = { id: 42 };
         pass("same object", object, object);
