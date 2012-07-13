@@ -1,0 +1,28 @@
+{
+    "name": "samsam",
+    "version": "0.1.0",
+    "description": "Value identification and comparison functions",
+    "homepage": "http://busterjs.org/docs/buster-assertions",
+    "author": { "name": "August Lilleaas and Christian Johansen" },
+    "contributors": [{
+        "name": "Christian Johansen",
+        "email": "christian@cjohansen.no",
+        "url": "http://cjohansen.no"
+    }, {
+        "name": "August Lilleaas",
+        "email": "august.lilleaas@gmail.com",
+        "url": "http://augustl.com"
+    }],
+    "main": "./samsam",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/busterjs/samsam.git"
+    },
+    "scripts": {
+        "test": "node test/samsam-test.js"
+    },
+    "devDependencies": {
+        "buster-util": ">=0.5",
+        "sinon": "~1.4"
+    }
+}
