@@ -2,7 +2,7 @@ if (typeof module === "object" && typeof require === "function") {
     var assert = require("assert");
     var buster = { util: require("buster-util") };
     var sinon = require("sinon");
-    var samsam = require("../samsam");
+    var samsam = require("../lib/samsam");
 }
 
 (function () {
