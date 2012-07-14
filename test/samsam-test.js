@@ -223,9 +223,9 @@ if (typeof module === "object" && typeof require === "function") {
              "LoOk Ma, CaSe-InSenSiTiVe");
         fail("match string is not substring of matchee", "Vim", "Emacs");
         fail("match string is not substring of object", {}, "Emacs");
-        fail("matcher is substring of object.toString", "Emacs", {
-            toString: function () { return "Emacs"; }
-        });
+        fail("matcher is not substring of object.toString", {
+            toString: function () { return "Vim"; }
+        }, "Emacs");
         fail("null and empty string", null, "");
         fail("undefined and empty string", undefined, "");
         fail("false and empty string", false, "");
