@@ -13,7 +13,7 @@
         "email": "august.lilleaas@gmail.com",
         "url": "http://augustl.com"
     }],
-    "main": "./samsam",
+    "main": "./lib/samsam",
     "repository": {
         "type": "git",
         "url": "https://github.com/busterjs/samsam.git"
