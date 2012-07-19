@@ -1,6 +1,6 @@
 {
     "name": "samsam",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Value identification and comparison functions",
     "homepage": "http://busterjs.org/docs/buster-assertions",
     "author": { "name": "August Lilleaas and Christian Johansen" },
