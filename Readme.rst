@@ -17,10 +17,10 @@ samsam
 identifiying the type of values and to compare values with varying degrees of
 strictness.
 
-``samsam`` is a general-purpose library with no dependencies. It works in
-browsers (including old and rowdy ones, like IE6) and Node. It will define
-itself as an AMD module if you want it to (i.e. if there's a ``define``
-function available).
+``samsam`` is a general-purpose library that depends on and extends the
+comparison functions provided by lodash/underscore.js. It works in browsers
+(including old and rowdy ones, like IE6) and Node. It will define itself as an
+AMD module if you want it to (i.e. if there's a ``define`` function available).
 
 ``samsam`` was originally extracted from the
 `referee <http://github.com/busterjs/referee/>`_ assertion library, which
@@ -28,23 +28,6 @@ ships with the Buster.JS testing framework.
 
 Predicate functions
 ===================
-
-``isArguments(object)``
------------------------
-
-Returns ``true`` if ``object`` is an ``arguments`` object, ``false`` otherwise.
-
-``isElement(object)``
----------------------
-
-Returns ``true`` if ``object`` is a DOM element node
-
-``isDate(object)``
-------------------
-
-Returns true if the object is a ``Date``, or *date-like*. Duck typing of date
-objects work by checking that the object has a ``getTime`` function whose return
-value equals the return value from the object's ``valueOf``.
 
 ``isNaN(value)``
 ----------------
@@ -57,6 +40,14 @@ instead it checks that the number is equal to itself.
 --------------------
 
 Returns ``true`` if ``value`` is ``-0``.
+
+``isElement(object)``
+---------------------
+
+Returns ``true`` if ``object`` is a DOM element node. Unlike
+Underscore.js/lodash, this function will return ``false`` if ``object`` is an
+*element-like* object, i.e. a regular object with a ``nodeType`` property that
+holds the value ``1``.
 
 Comparison functions
 ====================
@@ -83,7 +74,6 @@ Deep equal comparison. Two values are "deep equal" if:
 
   - They are identical
   - They are both date objects representing the same time
-  - They are both primitives and ``a == b``
   - They are both arrays containing elements that are all deepEqual
   - They are objects with the same set of properties, and each property
     in ``obj1`` is deepEqual to the corresponding property in ``obj2``
