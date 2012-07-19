@@ -1,7 +1,5 @@
 if (typeof module === "object" && typeof require === "function") {
-    var assert = require("assert");
-    var buster = { util: require("buster-util") };
-    var sinon = require("sinon");
+    var buster = require("buster");
     var samsam = require("../lib/samsam");
 }
 
@@ -12,14 +10,14 @@ if (typeof module === "object" && typeof require === "function") {
         function pass(name) {
             var args = Array.prototype.slice.call(arguments, 1);
             tc["should return true for " + name] = function () {
-                assert.ok(samsam[method].apply(samsam, args));
+                assert(samsam[method].apply(samsam, args));
             };
         }
 
         function fail(name) {
             var args = Array.prototype.slice.call(arguments, 1);
             tc["should return false for " + name] = function () {
-                assert.ok(!samsam[method].apply(samsam, args));
+                assert(!samsam[method].apply(samsam, args));
             };
         }
 
@@ -27,9 +25,9 @@ if (typeof module === "object" && typeof require === "function") {
             var args = Array.prototype.slice.call(arguments, 1);
             try {
                 samsam[method].apply(samsam, args);
-                assert.ok(false);
+                buster.assertion.fail("Expected to throw");
             } catch (e) {
-                assert.ok(true);
+                assert(true);
             }
         }
 
@@ -38,15 +36,8 @@ if (typeof module === "object" && typeof require === "function") {
         }
 
         body(pass, fail, shouldThrow, add);
-        buster.util.testCase(method, tc);
+        buster.testCase(method, tc);
     }
-
-    tests("isArguments", function (pass, fail) {
-        pass("real arguments object", arguments);
-        fail("primitive", 42);
-        fail("object without length", {});
-        fail("array", []);
-    });
 
     tests("isElement", function (pass, fail) {
         if (typeof document !== "undefined") {
@@ -57,22 +48,6 @@ if (typeof module === "object" && typeof require === "function") {
         fail("primitive", 42);
         fail("object", {});
         fail("node-like object", { nodeType: 1 });
-    });
-
-    tests("isDate", function (pass, fail) {
-        pass("date object", new Date());
-        pass("date-like object", {
-            getTime: function () { return 42; },
-            valueOf: function () { return 42; }
-        });
-        fail("regular object", { getTime: function () { return 42; } });
-        fail("primitive", 42);
-    });
-
-    tests("isNaN", function (pass, fail) {
-        pass("NaN", NaN);
-        fail("number", 42);
-        fail("object", {});
     });
 
     tests("isNegZero", function (pass, fail) {
@@ -96,6 +71,8 @@ if (typeof module === "object" && typeof require === "function") {
         var date = new Date();
         var sameDate = new Date(date.getTime());
         var anotherDate = new Date(date.getTime() - 10);
+        var sameDateWithProp = new Date(date.getTime());
+        sameDateWithProp.prop = 42;
 
         pass("object to itself", obj, obj);
         pass("strings", "Hey", "Hey");
@@ -109,14 +86,15 @@ if (typeof module === "object" && typeof require === "function") {
         pass("date objects with same date", date, sameDate);
         fail("date objects with different dates", date, anotherDate);
         fail("date objects to null", date, null);
-        pass("strings and numbers with coercion", "4", 4);
-        pass("numbers and strings with coercion", 4, "4");
-        pass("number object with coercion", 32, new Number(32));
-        pass("number object reverse with coercion", new Number(32), 32);
-        pass("falsy values with coercion", 0, "");
-        pass("falsy values reverse with coercion", "", 0);
-        pass("string boxing with coercion", "4", new String("4"));
-        pass("string boxing reverse with coercion", new String("4"), "4");
+        fail("date with different custom properties", date, sameDateWithProp);
+        fail("strings and numbers with coercion", "4", 4);
+        fail("numbers and strings with coercion", 4, "4");
+        fail("number object with coercion", 32, new Number(32));
+        fail("number object reverse with coercion", new Number(32), 32);
+        fail("falsy values with coercion", 0, "");
+        fail("falsy values reverse with coercion", "", 0);
+        fail("string boxing with coercion", "4", new String("4"));
+        fail("string boxing reverse with coercion", new String("4"), "4");
         pass("NaN to NaN", NaN, NaN);
         fail("-0 to +0", -0, +0);
         fail("-0 to 0", -0, 0);
@@ -155,6 +133,13 @@ if (typeof module === "object" && typeof require === "function") {
              [1, 2, "Hey there", func, { id: 42, prop: [2, 3] }],
              [1, 2, "Hey there", func, { id: 42, prop: [2, 3] }]);
 
+        fail("nested array with shallow array", [["hey"]], ["hey"]);
+
+        var arr1 = [1, 2, 3];
+        var arr2 = [1, 2, 3];
+        arr1.prop = 42;
+        fail("arrays with different custom properties", arr1, arr2);
+
         pass("regexp literals", /a/, /a/);
         pass("regexp objects", new RegExp("[a-z]+"), new RegExp("[a-z]+"));
 
@@ -162,7 +147,6 @@ if (typeof module === "object" && typeof require === "function") {
         var re2 = new RegExp("[a-z]+");
         re2.id = 42;
 
-        fail("nested array with shallow array", [["hey"]], ["hey"]);
         fail("regexp objects with custom properties", re1, re2);
         fail("different objects", { id: 42 }, {});
         fail("object to null", {}, null);
@@ -212,9 +196,9 @@ if (typeof module === "object" && typeof require === "function") {
              "Assertions 123", function () { return "Hey"; });
 
         add("should call matcher with object", function () {
-            var spy = sinon.spy();
+            var spy = this.spy();
             samsam.match("Assertions 123", spy);
-            assert.ok(spy.calledWith("Assertions 123"));
+            assert.calledWith(spy, "Assertions 123");
         });
 
         pass("matcher is substring of matchee", "Diskord", "or");
