@@ -29,13 +29,6 @@ ships with the Buster.JS testing framework.
 Predicate functions
 ===================
 
-``isNaN(value)``
-----------------
-
-Returns ``true`` if passed in value is ``NaN``. Unlike the globally available
-``isNaN``, this method does not attempt to coerce its argument to a number,
-instead it checks that the number is equal to itself.
-
 ``isNegZero(value)``
 --------------------
 
