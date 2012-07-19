@@ -163,7 +163,7 @@ if (typeof module === "object" && typeof require === "function") {
         function gather() { return arguments; }
         var arrayLike = { length: 4, "0": 1, "1": 2, "2": {}, "3": [] };
 
-        pass("arguments to array", [1,2,{},[]], gather(1, 2, {}, []));
+        pass("arguments to array", [1, 2, {}, []], gather(1, 2, {}, []));
         pass("array to arguments", gather(), []);
 
         pass("arguments to array like object",
