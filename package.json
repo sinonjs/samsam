@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "description": "Value identification and comparison functions",
     "homepage": "http://busterjs.org/docs/buster-assertions",
-    "author": { "name": "August Lilleaas and Christian Johansen" },
+    "author": "Christian Johansen",
     "contributors": [{
         "name": "Christian Johansen",
         "email": "christian@cjohansen.no",
