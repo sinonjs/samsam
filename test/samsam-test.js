@@ -184,7 +184,7 @@ if (typeof module === "object" && typeof require === "function") {
         shouldThrow("match object === null", "Assertions 123", null);
         fail("match object === false", "Assertions 123", false);
         fail("matching number against string", "Assertions 123", 23);
-        pass("matching number against similar string", "23", 23);
+        fail("matching number against similar string", "23", 23);
         pass("matching number against itself", 23, 23);
         pass("matcher function returns true",
              "Assertions 123", function (obj) { return true; });
