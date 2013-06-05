@@ -22,7 +22,7 @@
         "test": "node test/samsam-test.js"
     },
     "dependencies": {
-        "lodash": "~0.4"
+        "lodash": "~1.0"
     },
     "devDependencies": {
         "buster": "0.6.11"
