@@ -17,8 +17,7 @@ samsam
 identifiying the type of values and to compare values with varying degrees of
 strictness.
 
-``samsam`` is a general-purpose library that depends on and extends the
-comparison functions provided by lodash/underscore.js. It works in browsers
+``samsam`` is a general-purpose library with no dependencies. It works in browsers
 (including old and rowdy ones, like IE6) and Node. It will define itself as an
 AMD module if you want it to (i.e. if there's a ``define`` function available).
 
@@ -28,6 +27,11 @@ ships with the Buster.JS testing framework.
 
 Predicate functions
 ===================
+
+``isArguments(object)``
+-----------------------
+
+Returns ``true`` if ``object`` is an ``arguments`` object, ``false`` otherwise.
 
 ``isNegZero(value)``
 --------------------
@@ -41,6 +45,13 @@ Returns ``true`` if ``object`` is a DOM element node. Unlike
 Underscore.js/lodash, this function will return ``false`` if ``object`` is an
 *element-like* object, i.e. a regular object with a ``nodeType`` property that
 holds the value ``1``.
+
+``isDate(object)``
+------------------
+
+Returns true if the object is a ``Date``, or *date-like*. Duck typing of date
+objects work by checking that the object has a ``getTime`` function whose return
+value equals the return value from the object's ``valueOf``.
 
 Comparison functions
 ====================
