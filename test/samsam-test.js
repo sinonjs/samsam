@@ -168,6 +168,32 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("arguments to array like object",
              arrayLike, gather(1, 2, {}, []));
+
+        var cyclic1 = {}, cyclic2 = {};
+        cyclic1.ref = cyclic1;
+        cyclic2.ref = cyclic2;
+        pass("equal cyclic objects (cycle on 2nd level)", cyclic1, cyclic2);
+
+        var cyclic3 = {}, cyclic4 = {};
+        cyclic3.ref = cyclic3;
+        cyclic4.ref = cyclic4;
+        cyclic4.ref2 = cyclic4;
+        fail("different cyclic objects (cycle on 2nd level)", cyclic3, cyclic4);
+
+        var cyclic5 = {}, cyclic6 = {};
+        cyclic5.ref = {};
+        cyclic5.ref.ref = cyclic5;
+        cyclic6.ref = {};
+        cyclic6.ref.ref = cyclic6;
+        pass("equal cyclic objects (cycle on 3rd level)", cyclic5, cyclic6);
+
+        var cyclic7 = {}, cyclic8 = {};
+        cyclic7.ref = {};
+        cyclic7.ref.ref = cyclic7;
+        cyclic8.ref = {};
+        cyclic8.ref.ref = cyclic8;
+        cyclic8.ref.ref2 = cyclic8;
+        fail("different cyclic objects (cycle on 3rd level)", cyclic7, cyclic8);
     });
 
     tests("match", function (pass, fail, shouldThrow, add) {
@@ -263,4 +289,5 @@ if (typeof module === "object" && typeof require === "function") {
         fail("mis-matching array 'subset'", [1, 2, 3], [2, 3, 4]);
         fail("mis-ordered array 'subset'", [1, 2, 3], [1, 3]);
     });
+
 }());
