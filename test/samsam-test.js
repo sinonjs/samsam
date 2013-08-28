@@ -89,12 +89,12 @@ if (typeof module === "object" && typeof require === "function") {
         fail("date with different custom properties", date, sameDateWithProp);
         fail("strings and numbers with coercion", "4", 4);
         fail("numbers and strings with coercion", 4, "4");
-        fail("number object with coercion", 32, new Number(32));
-        fail("number object reverse with coercion", new Number(32), 32);
+        fail("number object with coercion", 32, Number(32));
+        fail("number object reverse with coercion", Number(32), 32);
         fail("falsy values with coercion", 0, "");
         fail("falsy values reverse with coercion", "", 0);
-        fail("string boxing with coercion", "4", new String("4"));
-        fail("string boxing reverse with coercion", new String("4"), "4");
+        fail("string boxing with coercion", "4", String("4"));
+        fail("string boxing reverse with coercion", String("4"), "4");
         pass("NaN to NaN", NaN, NaN);
         fail("-0 to +0", -0, +0);
         fail("-0 to 0", -0, 0);
@@ -156,8 +156,8 @@ if (typeof module === "object" && typeof require === "function") {
         fail("object to true", {}, true);
         fail("true to object", true, {});
         fail("'empty' object to date", {}, new Date());
-        fail("'empty' object to string object", {}, new String());
-        fail("'empty' object to number object", {}, new Number());
+        fail("'empty' object to string object", {}, String());
+        fail("'empty' object to number object", {}, Number());
         fail("'empty' object to empty array", {}, []);
 
         function gather() { return arguments; }
