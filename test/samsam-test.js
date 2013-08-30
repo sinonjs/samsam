@@ -89,12 +89,12 @@ if (typeof module === "object" && typeof require === "function") {
         fail("date with different custom properties", date, sameDateWithProp);
         fail("strings and numbers with coercion", "4", 4);
         fail("numbers and strings with coercion", 4, "4");
-        fail("number object with coercion", 32, Number(32));
-        fail("number object reverse with coercion", Number(32), 32);
+        fail("number object with coercion", 32, new Number(32));
+        fail("number object reverse with coercion", new Number(32), 32);
         fail("falsy values with coercion", 0, "");
         fail("falsy values reverse with coercion", "", 0);
-        fail("string boxing with coercion", "4", String("4"));
-        fail("string boxing reverse with coercion", String("4"), "4");
+        fail("string boxing with coercion", "4", new String("4"));
+        fail("string boxing reverse with coercion", new String("4"), "4");
         pass("NaN to NaN", NaN, NaN);
         fail("-0 to +0", -0, +0);
         fail("-0 to 0", -0, 0);
@@ -168,32 +168,81 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("arguments to array like object",
              arrayLike, gather(1, 2, {}, []));
+    });
 
-        var cyclic1 = {}, cyclic2 = {};
-        cyclic1.ref = cyclic1;
-        cyclic2.ref = cyclic2;
-        pass("equal cyclic objects (cycle on 2nd level)", cyclic1, cyclic2);
+    /**
+     * Tests for cyclic objects.
+     */
+    tests("deepEqual", function (pass, fail) {
 
-        var cyclic3 = {}, cyclic4 = {};
-        cyclic3.ref = cyclic3;
-        cyclic4.ref = cyclic4;
-        cyclic4.ref2 = cyclic4;
-        fail("different cyclic objects (cycle on 2nd level)", cyclic3, cyclic4);
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = cyclic1;
+            cyclic2.ref = cyclic2;
+            pass("equal cyclic objects (cycle on 2nd level)", cyclic1, cyclic2);
+        }());
 
-        var cyclic5 = {}, cyclic6 = {};
-        cyclic5.ref = {};
-        cyclic5.ref.ref = cyclic5;
-        cyclic6.ref = {};
-        cyclic6.ref.ref = cyclic6;
-        pass("equal cyclic objects (cycle on 3rd level)", cyclic5, cyclic6);
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = cyclic1;
+            cyclic2.ref = cyclic2;
+            cyclic2.ref2 = cyclic2;
+            fail("different cyclic objects (cycle on 2nd level)",
+                cyclic1, cyclic2);
+        }());
 
-        var cyclic7 = {}, cyclic8 = {};
-        cyclic7.ref = {};
-        cyclic7.ref.ref = cyclic7;
-        cyclic8.ref = {};
-        cyclic8.ref.ref = cyclic8;
-        cyclic8.ref.ref2 = cyclic8;
-        fail("different cyclic objects (cycle on 3rd level)", cyclic7, cyclic8);
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = {};
+            cyclic1.ref.ref = cyclic1;
+            cyclic2.ref = {};
+            cyclic2.ref.ref = cyclic2;
+            pass("equal cyclic objects (cycle on 3rd level)", cyclic1, cyclic2);
+        }());
+
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = {};
+            cyclic1.ref.ref = cyclic1;
+            cyclic2.ref = {};
+            cyclic2.ref.ref = cyclic2;
+            cyclic2.ref.ref2 = cyclic2;
+            fail("different cyclic objects (cycle on 3rd level)",
+                cyclic1, cyclic2);
+        }());
+
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = cyclic1;
+            cyclic2.ref = cyclic1;
+            pass("equal objects even though only one object is cyclic",
+                cyclic1, cyclic2);
+        }());
+
+        (function () {
+            var cyclic1 = {}, cyclic2 = {};
+            cyclic1.ref = {
+                ref: cyclic1
+            };
+            cyclic2.ref = {};
+            cyclic2.ref.ref = cyclic2.ref;
+            pass("referencing different but equal cyclic objects",
+                cyclic1, cyclic2);
+        }());
+
+        (function () {
+            var cyclic1 = {a: "a"}, cyclic2 = {a: "a"};
+            cyclic1.ref = {
+                b: "b",
+                ref: cyclic1
+            };
+            cyclic2.ref = {
+                b: "b"
+            };
+            cyclic2.ref.ref = cyclic2.ref;
+            fail("referencing different and unequal cyclic objects",
+                cyclic1, cyclic2);
+        }());
     });
 
     tests("match", function (pass, fail, shouldThrow, add) {
