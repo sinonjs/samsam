@@ -341,4 +341,11 @@ if (typeof module === "object" && typeof require === "function") {
         pass("objects with empty arrays", { xs: [] }, { xs: [] });
     });
 
+    tests("isArguments", function (pass, fail) {
+        pass("arguments object", arguments);
+        fail("primitive", 42);
+        fail("object", {});
+        pass("arguments object from strict-mode function",
+          (function() { "use strict"; return arguments; }()));
+    });
 }());
