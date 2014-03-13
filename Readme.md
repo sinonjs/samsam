@@ -46,7 +46,6 @@ value equals the return value from the object's `valueOf`.
 
 
 ## Comparison functions
-====================
 
 
 ###`identical(x, y)`
