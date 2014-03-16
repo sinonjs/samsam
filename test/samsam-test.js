@@ -339,6 +339,7 @@ if (typeof module === "object" && typeof require === "function") {
         fail("mis-ordered array 'subset'", [1, 2, 3], [1, 3]);
         pass("empty arrays", [], []);
         pass("objects with empty arrays", { xs: [] }, { xs: [] });
+        fail("nested objects with different depth", { a: 1 }, { b: { c: 2 } });
     });
 
 }());
