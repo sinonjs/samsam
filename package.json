@@ -23,7 +23,8 @@
         "url": "https://github.com/busterjs/samsam.git"
     },
     "scripts": {
-        "test": "node test/samsam-test.js"
+        "test": "node test/samsam-test.js",
+        "test-debug": "node --debug-brk test/samsam-test.js"
     },
     "devDependencies": {
         "buster": "0.6.11"
