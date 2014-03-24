@@ -342,4 +342,11 @@ if (typeof module === "object" && typeof require === "function") {
         fail("nested objects with different depth", { a: 1 }, { b: { c: 2 } });
     });
 
+    tests("isArguments", function (pass, fail) {
+        pass("arguments object", arguments);
+        fail("primitive", 42);
+        fail("object", {});
+        pass("arguments object from strict-mode function",
+          (function() { "use strict"; return arguments; }()));
+    });
 }());
