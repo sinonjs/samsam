@@ -210,3 +210,12 @@ samsam.match(el, {
     innerHTML: "Howdy"
 });
 ```
+
+
+## Changelog
+
+**1.1.1** (26.03.2014)
+
+* [Make `isArguments` work with arguments from `"strict mode"` functions](https://github.com/busterjs/samsam/commit/72903613af90f39474f8388ed8957eaea4cf46ae)
+* [Fix type error for nested object in function `match`](https://github.com/busterjs/samsam/commit/9d3420a11e9b3c65559945e60ca56980820db20f)
+* Fix for issue [#366, Assertion match fails with data attribute](https://github.com/busterjs/buster/issues/366)
