@@ -4,6 +4,9 @@ if (typeof module === "object" && typeof require === "function") {
 }
 
 (function () {
+
+    var assert = buster.assert;
+
     function tests(method, body) {
         var tc = {};
 
@@ -340,6 +343,20 @@ if (typeof module === "object" && typeof require === "function") {
         pass("empty arrays", [], []);
         pass("objects with empty arrays", { xs: [] }, { xs: [] });
         fail("nested objects with different depth", { a: 1 }, { b: { c: 2 } });
+        pass("dom elements with matching data attributes", {
+            getAttribute: function (name) {
+                if (name === "data-path") {
+                    return "foo.bar";
+                }
+            }
+        }, { "data-path": "foo.bar" });
+        fail("dom elements with not matching data attributes", {
+            getAttribute: function (name) {
+                if (name === "data-path") {
+                    return "foo.foo";
+                }
+            }
+        }, { "data-path": "foo.bar" });
     });
 
     tests("isArguments", function (pass, fail) {
@@ -347,6 +364,6 @@ if (typeof module === "object" && typeof require === "function") {
         fail("primitive", 42);
         fail("object", {});
         pass("arguments object from strict-mode function",
-          (function() { "use strict"; return arguments; }()));
+            (function () { "use strict"; return arguments; }()));
     });
 }());
