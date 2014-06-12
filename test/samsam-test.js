@@ -364,6 +364,9 @@ if (typeof module === "object" && typeof require === "function") {
         pass("equal undefined properties", { foo: undefined }, { foo: undefined });
         fail("matcher with unmatched undefined property", { foo: 'arbitrary' }, { foo: undefined });
         pass('unmatched undefined property', {}, { foo: undefined });
+
+        var obj = { foo: undefined };
+        pass("same object matches self", obj, obj);
     });
 
     tests("isArguments", function (pass, fail) {
