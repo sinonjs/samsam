@@ -357,6 +357,10 @@ if (typeof module === "object" && typeof require === "function") {
                 }
             }
         }, { "data-path": "foo.bar" });
+
+        pass("equal null properties", { foo: null }, { foo: null });
+        fail("unmatched null property", {}, { foo: null });
+        pass("equal undefined properties", { foo: undefined }, { foo: undefined });
     });
 
     tests("isArguments", function (pass, fail) {
