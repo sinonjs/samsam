@@ -360,7 +360,10 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("equal null properties", { foo: null }, { foo: null });
         fail("unmatched null property", {}, { foo: null });
+        fail("matcher with unmatched null property", { foo: 'arbitrary' }, { foo: null });
         pass("equal undefined properties", { foo: undefined }, { foo: undefined });
+        fail("matcher with unmatched undefined property", { foo: 'arbitrary' }, { foo: undefined });
+        pass('unmatched undefined property', {}, { foo: undefined });
     });
 
     tests("isArguments", function (pass, fail) {
