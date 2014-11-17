@@ -367,6 +367,13 @@ if (typeof module === "object" && typeof require === "function") {
 
         var obj = { foo: undefined };
         pass("same object matches self", obj, obj);
+
+        pass("null matches null", null, null);
+        fail("null does not match undefined", null, undefined);
+
+        pass("undefined matches undefined", undefined, undefined);
+        fail("undefined does not match null", undefined, null);
+
     });
 
     tests("isArguments", function (pass, fail) {
