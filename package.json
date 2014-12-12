@@ -2,7 +2,7 @@
     "name": "samsam",
     "version": "1.1.2",
     "description": "Value identification and comparison functions",
-    "homepage": "http://busterjs.org/docs/buster-assertions",
+    "homepage": "http://docs.busterjs.org/en/latest/modules/samsam/",
     "author": "Christian Johansen",
     "contributors": [{
         "name": "Christian Johansen",
