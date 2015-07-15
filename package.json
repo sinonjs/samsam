@@ -17,6 +17,7 @@
         "email": "d.wittner@gmx.de",
         "url": "https://github.com/dwittner"
     }],
+    "license": "BSD-3-Clause",
     "main": "./lib/samsam",
     "repository": {
         "type": "git",
