@@ -28,10 +28,12 @@
     "url": "https://github.com/busterjs/samsam.git"
   },
   "scripts": {
-    "test": "node test/samsam-test.js",
-    "test-debug": "node --debug-brk test/samsam-test.js"
+    "test": "grunt test"
   },
   "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-buster": "0.4.x",
+    "grunt-cli": "0.1.x",
     "buster": "0.7.x"
   }
 }
