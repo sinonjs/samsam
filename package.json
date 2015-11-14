@@ -34,6 +34,7 @@
     "grunt": "0.4.x",
     "grunt-buster": "0.4.x",
     "grunt-cli": "0.1.x",
-    "buster": "0.7.x"
+    "buster": "0.7.x",
+    "phantomjs": "1.9.x"
   }
 }
