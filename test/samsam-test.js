@@ -171,6 +171,11 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("arguments to array like object",
              arrayLike, gather(1, 2, {}, []));
+
+        if (typeof Set !== "undefined") {
+          pass("sets with the same content", new Set([1, 2, 3]), new Set([2, 1, 3]));
+          fail("sets with different content", new Set([1, 2, 3]), new Set([2, 5, 3]));
+       }
     });
 
     /**
