@@ -380,6 +380,14 @@ if (typeof module === "object" && typeof require === "function") {
         pass("undefined matches undefined", undefined, undefined);
         fail("undefined does not match null", undefined, null);
 
+        if (typeof Set !== 'undefined') {
+            pass("sets with same content", new Set([1, 2, 3]), new Set([2, 3, 1]));
+            pass("subset", new Set([1, 2, 3]), new Set([3, 1]));
+            pass("subset complex types", new Set([1, {id: 42}, 3]), new Set([{id: 42}]));
+            fail("sets with dissimilar content", new Set([1, 2, 3]), new Set([2, 5, 1]));
+            fail("sets with different complex member", new Set([{id: 42}]), new Set([{id: 13}]));
+        }
+
     });
 
     tests("isArguments", function (pass, fail) {
