@@ -386,8 +386,43 @@ if (typeof module === "object" && typeof require === "function") {
             pass("subset complex types", new Set([1, {id: 42}, 3]), new Set([{id: 42}]));
             fail("sets with dissimilar content", new Set([1, 2, 3]), new Set([2, 5, 1]));
             fail("sets with different complex member", new Set([{id: 42}]), new Set([{id: 13}]));
-        }
 
+            pass(
+                "differently sorted complex objects",
+                new Set([{
+                    end: "2019-08-07T18:00:00Z",
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NORGE",
+                        title: "NORGE"
+                    },
+                    resId: "http://id.nrk.no/2015/guri/68cc0a15-2be1-4666-984f-b421b415326d/publicationEvent/0",
+                    start: "2015-04-03T14:00:00Z"
+                }, {
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NRK",
+                        title: "NRK"
+                    },
+                    resId: "x-test:pubEvent-1",
+                    start: "2015-04-03T14:00:00Z"
+                }]),
+
+                new Set([{
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NRK",
+                        title: "NRK"
+                    },
+                    resId: "x-test:pubEvent-1",
+                    start: "2015-04-03T14:00:00Z"
+                }, {
+                    end: "2019-08-07T18:00:00Z",
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NORGE",
+                        title: "NORGE"
+                    },
+                    start: "2015-04-03T14:00:00Z"
+                }])
+            );
+        }
     });
 
     tests("isArguments", function (pass, fail) {
