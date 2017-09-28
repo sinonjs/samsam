@@ -171,6 +171,11 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("arguments to array like object",
              arrayLike, gather(1, 2, {}, []));
+
+        if (typeof Set !== "undefined") {
+          pass("sets with the same content", new Set([1, 2, 3]), new Set([2, 1, 3]));
+          fail("sets with different content", new Set([1, 2, 3]), new Set([2, 5, 3]));
+       }
     });
 
     /**
@@ -340,6 +345,7 @@ if (typeof module === "object" && typeof require === "function") {
         pass("matching array subset", [1, 2, 3, { id: 42 }], [{ id: 42 }]);
         fail("mis-matching array 'subset'", [1, 2, 3], [2, 3, 4]);
         fail("mis-ordered array 'subset'", [1, 2, 3], [1, 3]);
+        fail("mis-ordered, but similar arrays of objects", [{a: 'a'}, {a: 'aa'}], [{a: 'aa'}, {a: 'a'}]);
         pass("empty arrays", [], []);
         pass("objects with empty arrays", { xs: [] }, { xs: [] });
         fail("nested objects with different depth", { a: 1 }, { b: { c: 2 } });
@@ -373,6 +379,50 @@ if (typeof module === "object" && typeof require === "function") {
 
         pass("undefined matches undefined", undefined, undefined);
         fail("undefined does not match null", undefined, null);
+
+        if (typeof Set !== 'undefined') {
+            pass("sets with same content", new Set([1, 2, 3]), new Set([2, 3, 1]));
+            pass("subset", new Set([1, 2, 3]), new Set([3, 1]));
+            pass("subset complex types", new Set([1, {id: 42}, 3]), new Set([{id: 42}]));
+            fail("sets with dissimilar content", new Set([1, 2, 3]), new Set([2, 5, 1]));
+            fail("sets with different complex member", new Set([{id: 42}]), new Set([{id: 13}]));
+
+            pass(
+                "differently sorted complex objects",
+                new Set([{
+                    end: "2019-08-07T18:00:00Z",
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NORGE",
+                        title: "NORGE"
+                    },
+                    resId: "http://id.nrk.no/2015/guri/68cc0a15-2be1-4666-984f-b421b415326d/publicationEvent/0",
+                    start: "2015-04-03T14:00:00Z"
+                }, {
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NRK",
+                        title: "NRK"
+                    },
+                    resId: "x-test:pubEvent-1",
+                    start: "2015-04-03T14:00:00Z"
+                }]),
+
+                new Set([{
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NRK",
+                        title: "NRK"
+                    },
+                    resId: "x-test:pubEvent-1",
+                    start: "2015-04-03T14:00:00Z"
+                }, {
+                    end: "2019-08-07T18:00:00Z",
+                    geoAvailability: {
+                        resId: "http://id.nrk.no/2015/guri/IPRights/geoavailability/NORGE",
+                        title: "NORGE"
+                    },
+                    start: "2015-04-03T14:00:00Z"
+                }])
+            );
+        }
 
         var date = new Date();
         var sameDate = new Date(date.getTime());
