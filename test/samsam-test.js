@@ -374,6 +374,11 @@ if (typeof module === "object" && typeof require === "function") {
         pass("undefined matches undefined", undefined, undefined);
         fail("undefined does not match null", undefined, null);
 
+        var date = new Date();
+        var sameDate = new Date(date.getTime());
+        var anotherDate = new Date(date.getTime() - 10);
+        pass("date objects with same date", date, sameDate);
+        fail("date objects with different dates", date, anotherDate);
     });
 
     tests("isArguments", function (pass, fail) {
