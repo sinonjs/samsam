@@ -1,6 +1,6 @@
 # samsam
 
-[![Build status](https://secure.travis-ci.org/busterjs/samsam.png?branch=master)](http://travis-ci.org/busterjs/samsam)
+[![Build status](https://secure.travis-ci.org/busterjs/samsam.svg?branch=master)](http://travis-ci.org/busterjs/samsam)
 
 > Same same, but different
 
