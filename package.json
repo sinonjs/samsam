@@ -25,7 +25,7 @@
   "main": "./lib/samsam",
   "repository": {
     "type": "git",
-    "url": "https://github.com/busterjs/samsam.git"
+    "url": "https://github.com/sinonjs/samsam.git"
   },
   "scripts": {
     "test": "mocha ./lib/samsam.test.js"
