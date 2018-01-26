@@ -32,6 +32,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "prepublishOnly": "mkdocs gh-deploy",
     "test": "mocha ./lib/samsam.test.js"
   },
   "dependencies": {
