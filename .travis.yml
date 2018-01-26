@@ -12,6 +12,15 @@ cache:
   directories:
   - node_modules
 
+before_script:
+  # Make npm run work for the script phase:
+  - if [ "x$TRAVIS_NODE_VERSION" != "x8" ]; then npm config set ignore-scripts false; fi
+  # these build targets only need to run once per build, so let's conserve a few resources
+  # ESLint only supports Node >=4
+  - if [ "x$TRAVIS_NODE_VERSION" = "x8" ]; then npm run lint; fi
 
 script:
   - npm test
+
+git:
+  depth: 10
