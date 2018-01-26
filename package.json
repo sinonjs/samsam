@@ -28,13 +28,12 @@
     "url": "https://github.com/busterjs/samsam.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha ./lib/samsam.test.js"
   },
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-buster": "0.4.x",
-    "grunt-cli": "0.1.x",
-    "buster": "0.7.x",
-    "phantomjs": "1.9.x"
+    "mocha": "5.0.0"
+  },
+  "dependencies": {
+    "referee": "1.2.0"
   }
 }
