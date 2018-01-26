@@ -20,6 +20,7 @@ before_script:
   - if [ "x$TRAVIS_NODE_VERSION" = "x8" ]; then npm run lint; fi
 
 script:
+  - npm run lint
   - npm test
 
 git:
