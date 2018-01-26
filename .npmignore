@@ -1,0 +1,8 @@
+.github
+docs
+lib/**/*test.js
+site
+test
+.editorconfig
+.eslint*
+*.yml
