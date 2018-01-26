@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>samsam - samsam</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "samsam";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> samsam</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">samsam</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#samsam">samsam</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#predicate-functions">Predicate functions</a></li>
+        
+            <li><a class="toctree-l3" href="#comparison-functions">Comparison functions</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">samsam</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>samsam</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="samsam">samsam</h1>
+<blockquote>
+<p>Same same, but different</p>
+</blockquote>
+<p><code>samsam</code> is a collection of predicate and comparison functions useful for
+identifiying the type of values and to compare values with varying degrees of
+strictness.</p>
+<p><code>samsam</code> is a general-purpose library with no dependencies. It works in browsers
+(including old and rowdy ones, like IE6) and Node. It will define itself as an
+AMD module if you want it to (i.e. if there's a <code>define</code> function available).</p>
+<h2 id="predicate-functions">Predicate functions</h2>
+<h3 id="isargumentsobject"><code>isArguments(object)</code></h3>
+<p>Returns <code>true</code> if <code>object</code> is an <code>arguments</code> object, <code>false</code> otherwise.</p>
+<h3 id="isnegzerovalue"><code>isNegZero(value)</code></h3>
+<p>Returns <code>true</code> if <code>value</code> is <code>-0</code>.</p>
+<h3 id="iselementobject"><code>isElement(object)</code></h3>
+<p>Returns <code>true</code> if <code>object</code> is a DOM element node. Unlike
+Underscore.js/lodash, this function will return <code>false</code> if <code>object</code> is an
+<em>element-like</em> object, i.e. a regular object with a <code>nodeType</code> property that
+holds the value <code>1</code>.</p>
+<h3 id="isdateobject"><code>isDate(object)</code></h3>
+<p>Returns true if the object is a <code>Date</code>, or <em>date-like</em>. Duck typing of date
+objects work by checking that the object has a <code>getTime</code> function whose return
+value equals the return value from the object's <code>valueOf</code>.</p>
+<h2 id="comparison-functions">Comparison functions</h2>
+<h3 id="identicalx-y"><code>identical(x, y)</code></h3>
+<p>Strict equality check according to EcmaScript Harmony's <code>egal</code>.</p>
+<p><strong>From the Harmony wiki:</strong></p>
+<blockquote>
+<p>An egal function simply makes available the internal <code>SameValue</code> function
+from section 9.12 of the ES5 spec. If two values are egal, then they are not
+observably distinguishable.</p>
+</blockquote>
+<p><code>identical</code> returns <code>true</code> when <code>===</code> is <code>true</code>, except for <code>-0</code> and
+<code>+0</code>, where it returns <code>false</code>. Additionally, it returns <code>true</code> when
+<code>NaN</code> is compared to itself.</p>
+<h3 id="deepequalobj1-obj2"><code>deepEqual(obj1, obj2)</code></h3>
+<p>Deep equal comparison. Two values are "deep equal" if:</p>
+<ul>
+<li>They are identical</li>
+<li>They are both date objects representing the same time</li>
+<li>They are both arrays containing elements that are all deepEqual</li>
+<li>They are objects with the same set of properties, and each property
+  in <code>obj1</code> is deepEqual to the corresponding property in <code>obj2</code></li>
+</ul>
+<h3 id="matchobject-matcher"><code>match(object, matcher)</code></h3>
+<p>Partial equality check. Compares <code>object</code> with matcher according a wide set of
+rules:</p>
+<h4 id="string-matcher">String matcher</h4>
+<p>In its simplest form, <code>match</code> performs a case insensitive substring match.
+When the matcher is a string, <code>object</code> is converted to a string, and the
+function returns <code>true</code> if the matcher is a case-insensitive substring of
+<code>object</code> as a string.</p>
+<pre><code class="javascript">samsam.match(&quot;Give me something&quot;, &quot;Give&quot;); //true
+samsam.match(&quot;Give me something&quot;, &quot;sumptn&quot;); // false
+samsam.match({ toString: function () { return &quot;yeah&quot;; } }, &quot;Yeah!&quot;); // true
+</code></pre>
+
+<p>The last example is not symmetric. When the matcher is a string, the <code>object</code>
+is coerced to a string - in this case using <code>toString</code>. Changing the order of
+the arguments would cause the matcher to be an object, in which case different
+rules apply (see below).</p>
+<h4 id="boolean-matcher">Boolean matcher</h4>
+<p>Performs a strict (i.e. <code>===</code>) match with the object. So, only <code>true</code>
+matches <code>true</code>, and only <code>false</code> matches <code>false</code>.</p>
+<h4 id="regular-expression-matcher">Regular expression matcher</h4>
+<p>When the matcher is a regular expression, the function will pass if
+<code>object.test(matcher)</code> is <code>true</code>. <code>match</code> is written in a generic way, so
+any object with a <code>test</code> method will be used as a matcher this way.</p>
+<pre><code class="javascript">samsam.match(&quot;Give me something&quot;, /^[a-z\s]$/i); // true
+samsam.match(&quot;Give me something&quot;, /[0-9]/); // false
+samsam.match({ toString: function () { return &quot;yeah!&quot;; } }, /yeah/); // true
+samsam.match(234, /[a-z]/); // false
+</code></pre>
+
+<h4 id="number-matcher">Number matcher</h4>
+<p>When the matcher is a number, the assertion will pass if <code>object == matcher</code>.</p>
+<pre><code class="javascript">samsam.match(&quot;123&quot;, 123); // true
+samsam.match(&quot;Give me something&quot;, 425); // false
+samsam.match({ toString: function () { return &quot;42&quot;; } }, 42); // true
+samsam.match(234, 1234); // false
+</code></pre>
+
+<h4 id="function-matcher">Function matcher</h4>
+<p>When the matcher is a function, it is called with <code>object</code> as its only
+argument. <code>match</code> returns <code>true</code> if the function returns <code>true</code>. A strict
+match is performed against the return value, so a boolean <code>true</code> is required,
+truthy is not enough.</p>
+<pre><code class="javascript">// true
+samsam.match(&quot;123&quot;, function (exp) {
+    return exp == &quot;123&quot;;
+});
+
+// false
+samsam.match(&quot;Give me something&quot;, function () {
+    return &quot;ok&quot;;
+});
+
+// true
+samsam.match({
+    toString: function () {
+        return &quot;42&quot;;
+    }
+}, function () { return true; });
+
+// false
+samsam.match(234, function () {});
+</code></pre>
+
+<h4 id="object-matcher">Object matcher</h4>
+<p>As mentioned above, if an object matcher defines a <code>test</code> method, <code>match</code>
+will return <code>true</code> if <code>matcher.test(object)</code> returns truthy.</p>
+<p>If the matcher does not have a test method, a recursive match is performed. If
+all properties of <code>matcher</code> matches corresponding properties in <code>object</code>,
+<code>match</code> returns <code>true</code>. Note that the object matcher does not care if the
+number of properties in the two objects are the same - only if all properties in
+the matcher recursively matches ones in <code>object</code>.</p>
+<pre><code class="javascript">// true
+samsam.match(&quot;123&quot;, {
+    test: function (arg) {
+        return arg == 123;
+    }
+});
+
+// false
+samsam.match({}, { prop: 42 });
+
+// true
+samsam.match({
+    name: &quot;Chris&quot;,
+    profession: &quot;Programmer&quot;
+}, {
+    name: &quot;Chris&quot;
+});
+
+// false
+samsam.match(234, { name: &quot;Chris&quot; });
+</code></pre>
+
+<h4 id="dom-elements">DOM elements</h4>
+<p><code>match</code> can be very helpful when comparing DOM elements, because it allows
+you to compare several properties with one call:</p>
+<pre><code class="javascript">var el = document.getElementById(&quot;myEl&quot;);
+
+samsam.match(el, {
+    tagName: &quot;h2&quot;,
+    className: &quot;item&quot;,
+    innerHTML: &quot;Howdy&quot;
+});
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.17.2
+Build Date UTC : 2018-01-26 20:09:05
+-->
