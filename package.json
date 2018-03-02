@@ -32,7 +32,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "mkdocs gh-deploy",
+    "prepublishOnly": "mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/samsam.test.js"
   },
   "dependencies": {
