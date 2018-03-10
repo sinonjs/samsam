@@ -37,13 +37,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@sinonjs/referee": "2.0.0",
-    "eslint": "4.16.0",
-    "eslint-config-sinon": "1.0.3",
-    "eslint-plugin-ie11": "1.0.0",
-    "eslint-plugin-mocha": "4.11.0",
-    "husky": "0.14.3",
-    "lint-staged": "6.1.0",
-    "mocha": "5.0.0"
+    "@sinonjs/referee": "^2.0.0",
+    "eslint": "^4.16.0",
+    "eslint-config-sinon": "^1.0.3",
+    "eslint-plugin-ie11": "^1.0.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "mocha": "^5.0.0"
   }
 }
