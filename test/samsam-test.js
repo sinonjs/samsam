@@ -278,6 +278,7 @@ if (typeof module === "object" && typeof require === "function") {
         fail("matcher does not return explicit true",
              "Assertions 123", function () { return "Hey"; });
 
+        // TODO
         add("should call matcher with object", function () {
             var spy = this.spy();
             samsam.match("Assertions 123", spy);
