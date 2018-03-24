@@ -30,6 +30,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "@sinonjs/referee": "^2.0.0",
     "eslint": "^4.16.0",
     "eslint-config-sinon": "^1.0.3",
     "eslint-plugin-ie11": "^1.0.0",
