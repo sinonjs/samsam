@@ -31,13 +31,6 @@ Underscore.js/lodash, this function will return `false` if `object` is an
 holds the value `1`.
 
 
-### `isDate(object)`
-
-Returns true if the object is a `Date`, or *date-like*. Duck typing of date
-objects work by checking that the object has a `getTime` function whose return
-value equals the return value from the object's `valueOf`.
-
-
 ## Comparison functions
 
 
