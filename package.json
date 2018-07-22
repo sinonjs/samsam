@@ -28,7 +28,9 @@
     "lib/",
     "!lib/**/*.test.js"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "array-from": "^2.1.1"
+  },
   "devDependencies": {
     "@sinonjs/referee": "^2.0.0",
     "eslint": "^4.19.1",
