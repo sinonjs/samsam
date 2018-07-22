@@ -7,7 +7,5 @@ module.exports = {
     exports: "named",
     format: "umd",
     moduleName: "samsam",
-    plugins: [
-        commonjs({sourceMap: false})
-    ]
+    plugins: [commonjs({ sourceMap: false })]
 };
