@@ -19,7 +19,7 @@
     "build:dist-folder": "mkdirp dist",
     "lint": "eslint .",
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
-    "test": "mocha ./lib/samsam.test.js",
+    "test": "mocha ./lib/*.test.js",
     "test-coverage": "nyc --reporter text --reporter html --reporter lcovonly npm run test"
   },
   "files": [
