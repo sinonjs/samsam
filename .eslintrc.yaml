@@ -7,7 +7,9 @@ env:
   node: true
 
 globals:
+  Map: false
   Set: false
+  Symbol: false
 
 plugins:
   - ie11
@@ -21,21 +23,23 @@ rules:
   ie11/no-weak-collections: error
 
 overrides:
-    files: '*.test.*'
-    plugins:
-        - mocha
-    env:
-        mocha: true
-    rules:
-        mocha/handle-done-callback: error
-        mocha/no-exclusive-tests: error
-        mocha/no-global-tests: error
-        mocha/no-hooks-for-single-case: off
-        mocha/no-identical-title: error
-        mocha/no-mocha-arrows: error
-        mocha/no-nested-tests: error
-        mocha/no-return-and-callback: error
-        mocha/no-sibling-hooks: error
-        mocha/no-skipped-tests: error
-        mocha/no-top-level-hooks: error
-
+  files: '*.test.*'
+  plugins:
+    - mocha
+  env:
+    mocha: true
+  rules:
+    max-nested-callbacks:
+      - warn
+      - 6
+    mocha/handle-done-callback: error
+    mocha/no-exclusive-tests: error
+    mocha/no-global-tests: error
+    mocha/no-hooks-for-single-case: off
+    mocha/no-identical-title: error
+    mocha/no-mocha-arrows: error
+    mocha/no-nested-tests: error
+    mocha/no-return-and-callback: error
+    mocha/no-sibling-hooks: error
+    mocha/no-skipped-tests: error
+    mocha/no-top-level-hooks: error
