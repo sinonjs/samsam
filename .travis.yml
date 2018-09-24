@@ -15,7 +15,8 @@ cache:
 env:
   global:
     - SAUCE_USERNAME=sinonjs
-    - secure: "T0/TMZgx6NoqtAj8hvXUp1WGLdeqQR01EEWY/cvhJBv54dBLCvcIqEwBmG7w3shPmBMvFsvfrSgXqnoGeHm1dep7kanA1XfK4/OaDSfuBlFFVgIvwQph/lPqUBAHGItk/g+ky9OwJL2mNpTJmTNsf8/HulueDuRK9pUr/t98KxQ="
+    - secure: "Rwa8sp0slbhbdDFmxX/taISeINwjATzgITO2BHPymXK8vohP/HnyfbJjU75FT7scHbAy69TemdeFIJjTAp+dxR1j4z0PZv5fqiM9jqgt6lWsav0jSOFQfkmaiB4A9kNZMBBlLi0ynNqjO03pjVWMaMwOX2RtqWQ+XWA+gct1o+4="
+
 
 before_install:
   - npm config set strict-ssl false
