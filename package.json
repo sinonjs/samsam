@@ -31,9 +31,7 @@
     "lib/",
     "!lib/**/*.test.js"
   ],
-  "dependencies": {
-    "array-from": "^2.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@sinonjs/referee": "^2.0.0",
     "benchmark": "2.1.4",
