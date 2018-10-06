@@ -31,7 +31,9 @@
     "lib/",
     "!lib/**/*.test.js"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@sinonjs/commons": "^1.0.2"
+  },
   "devDependencies": {
     "@sinonjs/referee": "^2.0.0",
     "benchmark": "2.1.4",
