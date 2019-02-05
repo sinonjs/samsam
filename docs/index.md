@@ -13,9 +13,9 @@ AMD module if you want it to (i.e. if there's a `define` function available).
 ## Predicate functions
 
 
-### `isArguments(object)`
+### `isArguments(value)`
 
-Returns `true` if `object` is an `arguments` object, `false` otherwise.
+Returns `true` if `value` is an `arguments` object, `false` otherwise.
 
 
 ### `isNegZero(value)`
@@ -23,12 +23,16 @@ Returns `true` if `object` is an `arguments` object, `false` otherwise.
 Returns `true` if `value` is `-0`.
 
 
-### `isElement(object)`
+### `isElement(value)`
 
-Returns `true` if `object` is a DOM element node. Unlike
-Underscore.js/lodash, this function will return `false` if `object` is an
+Returns `true` if `value` is a DOM element node. Unlike
+Underscore.js/lodash, this function will return `false` if `value` is an
 *element-like* object, i.e. a regular object with a `nodeType` property that
 holds the value `1`.
+
+### `isSet(value)`
+
+Returns `true` if `value` is a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).
 
 
 ## Comparison functions
