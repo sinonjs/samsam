@@ -34,7 +34,7 @@
   "dependencies": {
     "@sinonjs/commons": "^1.0.2",
     "array-from": "^2.1.1",
-    "lodash.get": "^4.4.2"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@sinonjs/referee": "^2.0.0",
