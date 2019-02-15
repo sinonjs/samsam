@@ -20,7 +20,7 @@
     "build:dist-folder": "mkdirp dist",
     "lint": "eslint .",
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
-    "test": "mocha ./lib/*.test.js",
+    "test": "mocha --file ./fixture/verifier.js ./lib/*.test.js",
     "test-cloud": "npm run test-headless -- --wd",
     "test-coverage": "nyc --reporter text --reporter html --reporter lcovonly npm run test",
     "test-headless": "mochify lib/*.test.js"
@@ -37,7 +37,7 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "@sinonjs/referee": "^2.0.0",
+    "@sinonjs/referee": "^3.1.1",
     "benchmark": "2.1.4",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "2.9.0",
