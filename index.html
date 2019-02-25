@@ -113,15 +113,17 @@ strictness.</p>
 (including old and rowdy ones, like IE6) and Node. It will define itself as an
 AMD module if you want it to (i.e. if there's a <code>define</code> function available).</p>
 <h2 id="predicate-functions">Predicate functions</h2>
-<h3 id="isargumentsobject"><code>isArguments(object)</code></h3>
-<p>Returns <code>true</code> if <code>object</code> is an <code>arguments</code> object, <code>false</code> otherwise.</p>
+<h3 id="isargumentsvalue"><code>isArguments(value)</code></h3>
+<p>Returns <code>true</code> if <code>value</code> is an <code>arguments</code> object, <code>false</code> otherwise.</p>
 <h3 id="isnegzerovalue"><code>isNegZero(value)</code></h3>
 <p>Returns <code>true</code> if <code>value</code> is <code>-0</code>.</p>
-<h3 id="iselementobject"><code>isElement(object)</code></h3>
-<p>Returns <code>true</code> if <code>object</code> is a DOM element node. Unlike
-Underscore.js/lodash, this function will return <code>false</code> if <code>object</code> is an
+<h3 id="iselementvalue"><code>isElement(value)</code></h3>
+<p>Returns <code>true</code> if <code>value</code> is a DOM element node. Unlike
+Underscore.js/lodash, this function will return <code>false</code> if <code>value</code> is an
 <em>element-like</em> object, i.e. a regular object with a <code>nodeType</code> property that
 holds the value <code>1</code>.</p>
+<h3 id="issetvalue"><code>isSet(value)</code></h3>
+<p>Returns <code>true</code> if <code>value</code> is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>.</p>
 <h2 id="comparison-functions">Comparison functions</h2>
 <h3 id="identicalx-y"><code>identical(x, y)</code></h3>
 <p>Strict equality check according to EcmaScript Harmony's <code>egal</code>.</p>
@@ -289,5 +291,5 @@ samsam.match(el, {
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-14 14:36:52
+Build Date UTC : 2019-02-25 15:43:37
 -->
