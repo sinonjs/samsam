@@ -53,7 +53,7 @@ observably distinguishable.
 `NaN` is compared to itself.
 
 
-### `deepEqual(obj1, obj2)`
+### `deepEqual(actual, expectation)`
 
 Deep equal comparison. Two values are "deep equal" if:
 
@@ -61,7 +61,7 @@ Deep equal comparison. Two values are "deep equal" if:
 * They are both date objects representing the same time
 * They are both arrays containing elements that are all deepEqual
 * They are objects with the same set of properties, and each property
-  in `obj1` is deepEqual to the corresponding property in `obj2`
+  in `actual` is deepEqual to the corresponding property in `expectation`
 
 
 ### `match(object, matcher)`
