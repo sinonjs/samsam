@@ -136,14 +136,19 @@ observably distinguishable.</p>
 <p><code>identical</code> returns <code>true</code> when <code>===</code> is <code>true</code>, except for <code>-0</code> and
 <code>+0</code>, where it returns <code>false</code>. Additionally, it returns <code>true</code> when
 <code>NaN</code> is compared to itself.</p>
-<h3 id="deepequalobj1-obj2"><code>deepEqual(obj1, obj2)</code></h3>
+<h3 id="deepequalactual-expectation"><code>deepEqual(actual, expectation)</code></h3>
 <p>Deep equal comparison. Two values are "deep equal" if:</p>
 <ul>
 <li>They are identical</li>
 <li>They are both date objects representing the same time</li>
 <li>They are both arrays containing elements that are all deepEqual</li>
-<li>They are objects with the same set of properties, and each property
-  in <code>obj1</code> is deepEqual to the corresponding property in <code>obj2</code></li>
+<li>
+<p>They are objects with the same set of properties, and each property
+  in <code>actual</code> is deepEqual to the corresponding property in <code>expectation</code></p>
+</li>
+<li>
+<p><code>actual</code> can have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a> that are missing from <code>expectation</code></p>
+</li>
 </ul>
 <h3 id="matchobject-matcher"><code>match(object, matcher)</code></h3>
 <p>Partial equality check. Compares <code>object</code> with matcher according a wide set of
@@ -291,5 +296,5 @@ samsam.match(el, {
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-25 15:43:37
+Build Date UTC : 2019-03-08 09:29:27
 -->
