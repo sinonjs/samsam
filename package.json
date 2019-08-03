@@ -46,6 +46,7 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-prettier": "2.6.2",
     "husky": "^0.14.3",
+    "jquery": "^3.4.1",
     "jsdom": "^13.0.0",
     "jsdom-global": "^3.0.2",
     "lint-staged": "^6.1.0",
