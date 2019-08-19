@@ -4,3 +4,4 @@ site/
 coverage/
 dist/
 .nyc_output/
+out
