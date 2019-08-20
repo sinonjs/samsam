@@ -13,6 +13,7 @@ globals:
 
 plugins:
   - ie11
+  - local-rules
 
 rules:
   strict: [error, 'global']
@@ -21,6 +22,7 @@ rules:
   ie11/no-for-in-const: error
   ie11/no-loop-func: warn
   ie11/no-weak-collections: error
+  local-rules/no-prototype-methods: error
 
 overrides:
   files: '*.test.*'
@@ -29,6 +31,7 @@ overrides:
   env:
     mocha: true
   rules:
+    local-rules/no-prototype-methods: off
     max-nested-callbacks:
       - warn
       - 6
