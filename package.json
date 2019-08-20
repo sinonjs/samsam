@@ -43,6 +43,7 @@
     "eslint-config-prettier": "2.9.0",
     "eslint-config-sinon": "^1.0.3",
     "eslint-plugin-ie11": "^1.0.0",
+    "eslint-plugin-local-rules": "^0.1.1",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-prettier": "2.6.2",
     "husky": "^0.14.3",
