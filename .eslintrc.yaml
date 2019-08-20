@@ -1,5 +1,5 @@
 extends:
-    - 'eslint-config-sinon'
+    - sinon
     - 'plugin:prettier/recommended'
 
 env:
@@ -25,24 +25,24 @@ rules:
   local-rules/no-prototype-methods: error
 
 overrides:
-  files: '*.test.*'
-  plugins:
-    - mocha
-  env:
-    mocha: true
-  rules:
-    local-rules/no-prototype-methods: off
-    max-nested-callbacks:
-      - warn
-      - 6
-    mocha/handle-done-callback: error
-    mocha/no-exclusive-tests: error
-    mocha/no-global-tests: error
-    mocha/no-hooks-for-single-case: off
-    mocha/no-identical-title: error
-    mocha/no-mocha-arrows: error
-    mocha/no-nested-tests: error
-    mocha/no-return-and-callback: error
-    mocha/no-sibling-hooks: error
-    mocha/no-skipped-tests: error
-    mocha/no-top-level-hooks: error
+  - files: '*.test.*'
+    plugins:
+        - mocha
+    env:
+        mocha: true
+    rules:
+        local-rules/no-prototype-methods: off
+        max-nested-callbacks:
+            - warn
+            - 6
+        mocha/handle-done-callback: error
+        mocha/no-exclusive-tests: error
+        mocha/no-global-tests: error
+        mocha/no-hooks-for-single-case: off
+        mocha/no-identical-title: error
+        mocha/no-mocha-arrows: error
+        mocha/no-nested-tests: error
+        mocha/no-return-and-callback: error
+        mocha/no-sibling-hooks: error
+        mocha/no-skipped-tests: error
+        mocha/no-top-level-hooks: error
