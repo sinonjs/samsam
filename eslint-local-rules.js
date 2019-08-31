@@ -1,5 +1,12 @@
 "use strict";
 
+/**
+ * Returns an Array of prototype methods for the `prototype`
+ *
+ * @private
+ * @param  {object} prototype A prototype to examine
+ * @returns {Array}           An array of names of prototype methods
+ */
 function getPrototypeMethods(prototype) {
     /* eslint-disable local-rules/no-prototype-methods */
     return Object.getOwnPropertyNames(prototype).filter(function(name) {
@@ -31,8 +38,9 @@ module.exports = {
         create: function(context) {
             /**
              * Reports if a disallowed property is used in a CallExpression
+             *
              * @param {ASTNode} node The CallExpression node.
-             * @returns {void}
+             * @returns {undefined}
              */
             function disallowBuiltIns(node) {
                 if (
