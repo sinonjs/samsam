@@ -11,6 +11,7 @@ globals:
   Map: false
   Set: false
   Symbol: false
+  BigInt: false
 
 plugins:
   - ie11
