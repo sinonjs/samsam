@@ -16,7 +16,7 @@
   "scripts": {
     "benchmark": "node lib/deep-equal-benchmark.js",
     "build": "run-s build:dist-folder build:bundle",
-    "build:bundle": "rollup -c > dist/samsam.js",
+    "build:bundle": "rollup -c",
     "build:dist-folder": "mkdirp dist",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "lint": "eslint .",

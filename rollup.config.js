@@ -3,9 +3,13 @@
 var commonjs = require("rollup-plugin-commonjs");
 
 module.exports = {
-    entry: "lib/samsam.js",
-    exports: "named",
-    format: "umd",
-    moduleName: "samsam",
+    input: "lib/samsam.js",
+    output: {
+        inlineDynamicImports: true,
+        file: "dist/samsam.js",
+        exports: "named",
+        format: "umd",
+        name: "samsam"
+    },
     plugins: [commonjs({ sourceMap: false })]
 };
