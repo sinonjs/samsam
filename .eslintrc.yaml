@@ -1,7 +1,7 @@
 extends:
-    - sinon
-    - 'plugin:prettier/recommended'
-    - 'plugin:jsdoc/recommended'
+  - sinon
+  - "plugin:prettier/recommended"
+  - "plugin:jsdoc/recommended"
 
 env:
   browser: true
@@ -18,7 +18,7 @@ plugins:
   - local-rules
 
 rules:
-  strict: [error, 'global']
+  strict: [error, "global"]
 
   ie11/no-collection-args: error
   ie11/no-for-in-const: error
@@ -27,50 +27,50 @@ rules:
   local-rules/no-prototype-methods: error
 
 overrides:
-  - files: '*.test.*'
+  - files: "*.test.*"
     plugins:
-        - mocha
+      - mocha
     env:
-        mocha: true
+      mocha: true
     rules:
-        jsdoc/check-alignment: off
-        jsdoc/check-examples: off
-        jsdoc/check-indentation: off
-        jsdoc/check-param-names: off
-        jsdoc/check-syntax: off
-        jsdoc/check-tag-names: off
-        jsdoc/check-types: off
-        jsdoc/implements-on-classes: off
-        jsdoc/match-description: off
-        jsdoc/newline-after-description: off
-        jsdoc/no-types: off
-        jsdoc/no-undefined-types: off
-        jsdoc/require-description: off
-        jsdoc/require-description-complete-sentence: off
-        jsdoc/require-example: off
-        jsdoc/require-hyphen-before-param-description: off
-        jsdoc/require-jsdoc: off
-        jsdoc/require-param: off
-        jsdoc/require-param-description: off
-        jsdoc/require-param-name: off
-        jsdoc/require-param-type: off
-        jsdoc/require-returns: off
-        jsdoc/require-returns-check: off
-        jsdoc/require-returns-description: off
-        jsdoc/require-returns-type: off
-        jsdoc/valid-types: off
-        local-rules/no-prototype-methods: off
-        max-nested-callbacks:
-            - warn
-            - 6
-        mocha/handle-done-callback: error
-        mocha/no-exclusive-tests: error
-        mocha/no-global-tests: error
-        mocha/no-hooks-for-single-case: off
-        mocha/no-identical-title: error
-        mocha/no-mocha-arrows: error
-        mocha/no-nested-tests: error
-        mocha/no-return-and-callback: error
-        mocha/no-sibling-hooks: error
-        mocha/no-skipped-tests: error
-        mocha/no-top-level-hooks: error
+      jsdoc/check-alignment: off
+      jsdoc/check-examples: off
+      jsdoc/check-indentation: off
+      jsdoc/check-param-names: off
+      jsdoc/check-syntax: off
+      jsdoc/check-tag-names: off
+      jsdoc/check-types: off
+      jsdoc/implements-on-classes: off
+      jsdoc/match-description: off
+      jsdoc/newline-after-description: off
+      jsdoc/no-types: off
+      jsdoc/no-undefined-types: off
+      jsdoc/require-description: off
+      jsdoc/require-description-complete-sentence: off
+      jsdoc/require-example: off
+      jsdoc/require-hyphen-before-param-description: off
+      jsdoc/require-jsdoc: off
+      jsdoc/require-param: off
+      jsdoc/require-param-description: off
+      jsdoc/require-param-name: off
+      jsdoc/require-param-type: off
+      jsdoc/require-returns: off
+      jsdoc/require-returns-check: off
+      jsdoc/require-returns-description: off
+      jsdoc/require-returns-type: off
+      jsdoc/valid-types: off
+      local-rules/no-prototype-methods: off
+      max-nested-callbacks:
+        - warn
+        - 6
+      mocha/handle-done-callback: error
+      mocha/no-exclusive-tests: error
+      mocha/no-global-tests: error
+      mocha/no-hooks-for-single-case: off
+      mocha/no-identical-title: error
+      mocha/no-mocha-arrows: error
+      mocha/no-nested-tests: error
+      mocha/no-return-and-callback: error
+      mocha/no-sibling-hooks: error
+      mocha/no-skipped-tests: error
+      mocha/no-top-level-hooks: error
