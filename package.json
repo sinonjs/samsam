@@ -23,7 +23,8 @@
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/*.test.js",
     "test-cloud": "npm run test-headless -- --wd",
-    "test-coverage": "nyc --reporter text --reporter html --reporter lcovonly npm run test",
+    "test-check-coverage": "npm run test-coverage && nyc check-coverage --branches 100 --functions 100 --lines 100",
+    "test-coverage": "nyc --all --reporter text --reporter html --reporter lcovonly npm run test",
     "test-headless": "mochify --recursive -R dot --plugin [ proxyquire-universal ] \"./lib/*.test.js\""
   },
   "files": [
@@ -65,5 +66,17 @@
     "proxyquireify": "^3.2.1",
     "rollup": "^1.23.0",
     "rollup-plugin-commonjs": "^9.1.0"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.test.js",
+      "coverage/**",
+      "dist/**",
+      "out/**",
+      "site/**",
+      "eslint-local-rules.js",
+      "rollup.config.js",
+      "lib/deep-equal-benchmark.js"
+    ]
   }
 }
