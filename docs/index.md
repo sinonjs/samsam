@@ -6,9 +6,9 @@
 identifiying the type of values and to compare values with varying degrees of
 strictness.
 
-`samsam` is a general-purpose library with no dependencies. It works in browsers
-(including old and rowdy ones, like IE6) and Node. It will define itself as an
-AMD module if you want it to (i.e. if there's a `define` function available).
+`samsam` is a general-purpose library. It works in browsers and Node. It will
+define itself as an AMD module if you want it to (i.e. if there's a `define`
+function available).
 
 ## Predicate functions
 
