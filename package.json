@@ -39,7 +39,6 @@
   ],
   "dependencies": {
     "@sinonjs/commons": "^1.6.0",
-    "array-from": "^2.1.1",
     "lodash.get": "^4.4.2"
   },
   "devDependencies": {
@@ -54,6 +53,7 @@
     "eslint-plugin-mocha": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.7",
+    "jquery": "^3.4.1",
     "jsdoc": "^3.6.3",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
