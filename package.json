@@ -57,7 +57,7 @@
     "microtime": "3.0.0",
     "mkdirp": "^0.5.1",
     "mocha": "^6.2.0",
-    "mochify": "^6.4.1",
+    "mochify": "^6.6.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
