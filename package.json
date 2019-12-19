@@ -25,7 +25,10 @@
     "test-cloud": "npm run test-headless -- --wd",
     "test-check-coverage": "npm run test-coverage && nyc check-coverage --branches 100 --functions 100 --lines 100",
     "test-coverage": "nyc --all --reporter text --reporter html --reporter lcovonly npm run test",
-    "test-headless": "mochify --no-detect-globals --recursive -R dot --plugin [ proxyquire-universal ] \"./lib/*.test.js\""
+    "test-headless": "mochify --no-detect-globals --recursive -R dot --plugin [ proxyquire-universal ] \"./lib/*.test.js\"",
+    "preversion": "npm test-check-coverage",
+    "version": "changes --commits --footer",
+    "postversion": "git push --follow-tags && npm publish"
   },
   "browser": {
     "jsdom": false,
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "@sinonjs/referee": "^3.2.0",
+    "@studio/changes": "^1.7.0",
     "benchmark": "2.1.4",
     "eslint": "^6.2.0",
     "eslint-config-prettier": "^6.1.0",
