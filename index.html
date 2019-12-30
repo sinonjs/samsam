@@ -61,6 +61,8 @@
         
             <li><a class="toctree-l3" href="#comparison-functions">Comparison functions</a></li>
         
+            <li><a class="toctree-l3" href="#combining-matchers">Combining matchers</a></li>
+        
         </ul>
     
 
@@ -109,9 +111,9 @@
 <p><code>samsam</code> is a collection of predicate and comparison functions useful for
 identifiying the type of values and to compare values with varying degrees of
 strictness.</p>
-<p><code>samsam</code> is a general-purpose library with no dependencies. It works in browsers
-(including old and rowdy ones, like IE6) and Node. It will define itself as an
-AMD module if you want it to (i.e. if there's a <code>define</code> function available).</p>
+<p><code>samsam</code> is a general-purpose library. It works in browsers and Node. It will
+define itself as an AMD module if you want it to (i.e. if there's a <code>define</code>
+function available).</p>
 <h2 id="predicate-functions">Predicate functions</h2>
 <h3 id="isargumentsvalue"><code>isArguments(value)</code></h3>
 <p>Returns <code>true</code> if <code>value</code> is an <code>arguments</code> object, <code>false</code> otherwise.</p>
@@ -150,9 +152,106 @@ observably distinguishable.</p>
 <p><code>actual</code> can have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a> that are missing from <code>expectation</code></p>
 </li>
 </ul>
+<h3 id="matcher">Matcher</h3>
+<p>Match values and objects by type or or other fuzzy criteria. <code>samsam</code> ships
+with these built in matchers:</p>
+<h4 id="sinonmatchany"><code>sinon.match.any</code></h4>
+<p>Matches anything.</p>
+<h4 id="sinonmatchdefined"><code>sinon.match.defined</code></h4>
+<p>Requires the value to be defined.</p>
+<h4 id="sinonmatchtruthy"><code>sinon.match.truthy</code></h4>
+<p>Requires the value to be truthy.</p>
+<h4 id="sinonmatchfalsy"><code>sinon.match.falsy</code></h4>
+<p>Requires the value to be falsy.</p>
+<h4 id="sinonmatchbool"><code>sinon.match.bool</code></h4>
+<p>Requires the value to be a <code>Boolean</code></p>
+<h4 id="sinonmatchnumber"><code>sinon.match.number</code></h4>
+<p>Requires the value to be a <code>Number</code>.</p>
+<h4 id="sinonmatchstring"><code>sinon.match.string</code></h4>
+<p>Requires the value to be a <code>String</code>.</p>
+<h4 id="sinonmatchobject"><code>sinon.match.object</code></h4>
+<p>Requires the value to be an <code>Object</code>.</p>
+<h4 id="sinonmatchfunc"><code>sinon.match.func</code></h4>
+<p>Requires the value to be a <code>Function</code>.</p>
+<h4 id="sinonmatcharray"><code>sinon.match.array</code></h4>
+<p>Requires the value to be an <code>Array</code>.</p>
+<h4 id="sinonmatcharraydeepequalsarr"><code>sinon.match.array.deepEquals(arr)</code></h4>
+<p>Requires an <code>Array</code> to be deep equal another one.</p>
+<h4 id="sinonmatcharraystartswitharr"><code>sinon.match.array.startsWith(arr)</code></h4>
+<p>Requires an <code>Array</code> to start with the same values as another one.</p>
+<h4 id="sinonmatcharrayendswitharr"><code>sinon.match.array.endsWith(arr)</code></h4>
+<p>Requires an <code>Array</code> to end with the same values as another one.</p>
+<h4 id="sinonmatcharraycontainsarr"><code>sinon.match.array.contains(arr)</code></h4>
+<p>Requires an <code>Array</code> to contain each one of the values the given array has.</p>
+<h4 id="sinonmatchmap"><code>sinon.match.map</code></h4>
+<p>Requires the value to be a <code>Map</code>.</p>
+<h4 id="sinonmatchmapdeepequalsmap"><code>sinon.match.map.deepEquals(map)</code></h4>
+<p>Requires a <code>Map</code> to be deep equal another one.</p>
+<h4 id="sinonmatchmapcontainsmap"><code>sinon.match.map.contains(map)</code></h4>
+<p>Requires a <code>Map</code> to contain each one of the items the given map has.</p>
+<h4 id="sinonmatchset"><code>sinon.match.set</code></h4>
+<p>Requires the value to be a <code>Set</code>.</p>
+<h4 id="sinonmatchsetdeepequalsset"><code>sinon.match.set.deepEquals(set)</code></h4>
+<p>Requires a <code>Set</code> to be deep equal another one.</p>
+<h4 id="sinonmatchsetcontainsset"><code>sinon.match.set.contains(set)</code></h4>
+<p>Requires a <code>Set</code> to contain each one of the items the given set has.</p>
+<h4 id="sinonmatchregexp"><code>sinon.match.regexp</code></h4>
+<p>Requires the value to be a regular expression.</p>
+<h4 id="sinonmatchdate"><code>sinon.match.date</code></h4>
+<p>Requires the value to be a <code>Date</code> object.</p>
+<h4 id="sinonmatchsymbol"><code>sinon.match.symbol</code></h4>
+<p>Requires the value to be a <code>Symbol</code>.</p>
+<h4 id="sinonmatchinarray"><code>sinon.match.in(array)</code></h4>
+<p>Requires the value to be in the <code>array</code>.</p>
+<h4 id="sinonmatchsameref"><code>sinon.match.same(ref)</code></h4>
+<p>Requires the value to strictly equal <code>ref</code>.</p>
+<h4 id="sinonmatchtypeoftype"><code>sinon.match.typeOf(type)</code></h4>
+<p>Requires the value to be of the given type, where <code>type</code> can be one of
+    <code>"undefined"</code>,
+    <code>"null"</code>,
+    <code>"boolean"</code>,
+    <code>"number"</code>,
+    <code>"string"</code>,
+    <code>"object"</code>,
+    <code>"function"</code>,
+    <code>"array"</code>,
+    <code>"regexp"</code>,
+    <code>"date"</code> or
+    <code>"symbol"</code>.</p>
+<h4 id="sinonmatchinstanceoftype"><code>sinon.match.instanceOf(type)</code></h4>
+<p>Requires the value to be an instance of the given <code>type</code>.</p>
+<h4 id="sinonmatchhasproperty-expectation"><code>sinon.match.has(property[, expectation])</code></h4>
+<p>Requires the value to define the given <code>property</code>.</p>
+<p>The property might be inherited via the prototype chain. If the optional expectation is given, the value of the property is deeply compared with the expectation. The expectation can be another matcher.</p>
+<h4 id="sinonmatchhasownproperty-expectation"><code>sinon.match.hasOwn(property[, expectation])</code></h4>
+<p>Same as <code>sinon.match.has</code> but the property must be defined by the value itself. Inherited properties are ignored.</p>
+<h4 id="sinonmatchhasnestedpropertypath-expectation"><code>sinon.match.hasNested(propertyPath[, expectation])</code></h4>
+<p>Requires the value to define the given <code>propertyPath</code>. Dot (<code>prop.prop</code>) and bracket (<code>prop[0]</code>) notations are supported as in <a href="https://lodash.com/docs/4.4.2#get">Lodash.get</a>.</p>
+<p>The propertyPath might be inherited via the prototype chain. If the optional expectation is given, the value at the propertyPath is deeply compared with the expectation. The expectation can be another matcher.</p>
+<pre><code class="javascript">sinon.match.hasNested(&quot;a[0].b.c&quot;);
+
+// Where actual is something like
+var actual = { &quot;a&quot;: [{ &quot;b&quot;: { &quot;c&quot;: 3 } }] };
+
+sinon.match.hasNested(&quot;a.b.c&quot;);
+
+// Where actual is something like
+var actual = { &quot;a&quot;: { &quot;b&quot;: { &quot;c&quot;: 3 } } };
+</code></pre>
+
+<h4 id="sinonmatcheverymatcher"><code>sinon.match.every(matcher)</code></h4>
+<p>Requires <strong>every</strong> element of an <code>Array</code>, <code>Set</code> or <code>Map</code>, or alternatively <strong>every</strong> value of an <code>Object</code> to match the given <code>matcher</code>.</p>
+<h4 id="sinonmatchsomematcher"><code>sinon.match.some(matcher)</code></h4>
+<p>Requires <strong>any</strong> element of an <code>Array</code>, <code>Set</code> or <code>Map</code>, or alternatively <strong>any</strong> value of an <code>Object</code> to match the given <code>matcher</code>.</p>
+<h2 id="combining-matchers">Combining matchers</h2>
+<p>All matchers implement <code>and</code> and <code>or</code>. This allows to logically combine mutliple matchers. The result is a new matchers that requires both (and) or one of the matchers (or) to return <code>true</code>.</p>
+<pre><code class="javascript">var stringOrNumber = sinon.match.string.or(sinon.match.number);
+var bookWithPages = sinon.match.instanceOf(Book).and(sinon.match.has(&quot;pages&quot;));
+</code></pre>
+
 <h3 id="matchobject-matcher"><code>match(object, matcher)</code></h3>
-<p>Partial equality check. Compares <code>object</code> with matcher according a wide set of
-rules:</p>
+<p>Creates a custom matcher to perform partial equality check. Compares <code>object</code>
+with matcher according a wide set of rules:</p>
 <h4 id="string-matcher">String matcher</h4>
 <p>In its simplest form, <code>match</code> performs a case insensitive substring match.
 When the matcher is a string, <code>object</code> is converted to a string, and the
@@ -296,5 +395,5 @@ samsam.match(el, {
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-10-12 13:00:59
+Build Date UTC : 2019-12-30 10:45:36
 -->
