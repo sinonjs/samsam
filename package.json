@@ -46,7 +46,7 @@
     "type-detect": "^4.0.8"
   },
   "devDependencies": {
-    "@sinonjs/referee": "^3.2.0",
+    "@sinonjs/referee": "^4.0.0",
     "@studio/changes": "^2.0.0",
     "benchmark": "2.1.4",
     "eslint": "^6.2.0",
