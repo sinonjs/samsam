@@ -62,7 +62,7 @@
     "jsdoc": "^3.6.3",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
-    "lint-staged": "^9.4.1",
+    "lint-staged": "^10.0.7",
     "microtime": "3.0.0",
     "mkdirp": "^0.5.1",
     "mocha": "^7.0.1",
