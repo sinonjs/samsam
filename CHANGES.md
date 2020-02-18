@@ -1,5 +1,84 @@
 # Changes
 
+## 5.0.0
+
+- [`f288430`](https://github.com/sinonjs/samsam/commit/f2884309c9bf68b02ecfda3bd1df8d7a7a31686b)
+  Drop support for Node 8 (Morgan Roderick)
+    >
+    > As can be seen at https://github.com/nodejs/Release, Node 8 reached
+    > "end" of life on 2019-12-31, and is no longer actively supported.
+    >
+    > We will stop testing in Node 8 and start testing in Node 13, which will
+    > become the next LTS release from April 2020.
+    >
+- [`5bf52f4`](https://github.com/sinonjs/samsam/commit/5bf52f42006219c0ee9df0f20746e78b1ace58c1)
+  Add CODE_OF_CONDUCT.md (Morgan Roderick)
+- [`b3a9559`](https://github.com/sinonjs/samsam/commit/b3a955934d72c954367c67297be03b6cb0f97b3a)
+  Remove a couple of lint warnings (Morgan Roderick)
+- [`02fac64`](https://github.com/sinonjs/samsam/commit/02fac644420299be0a3ed1331ba97aa49e70f999)
+  Bump mkdirp from 0.5.1 to 1.0.3 (dependabot-preview[bot])
+    >
+    > Bumps [mkdirp](https://github.com/isaacs/node-mkdirp) from 0.5.1 to 1.0.3.
+    > - [Release notes](https://github.com/isaacs/node-mkdirp/releases)
+    > - [Changelog](https://github.com/isaacs/node-mkdirp/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/isaacs/node-mkdirp/commits/v1.0.3)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`cbcca7d`](https://github.com/sinonjs/samsam/commit/cbcca7d13b0c874a89659a6a34a9c233b7a9a0e3)
+  Bump rollup from 1.27.14 to 1.31.0 (dependabot-preview[bot])
+    >
+    > Bumps [rollup](https://github.com/rollup/rollup) from 1.27.14 to 1.31.0.
+    > - [Release notes](https://github.com/rollup/rollup/releases)
+    > - [Changelog](https://github.com/rollup/rollup/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/rollup/rollup/compare/v1.27.14...v1.31.0)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`4ddc65a`](https://github.com/sinonjs/samsam/commit/4ddc65a35edf169aa610fe15c39fca5aff57ff62)
+  Bump eslint-config-prettier from 6.9.0 to 6.10.0 (dependabot-preview[bot])
+    >
+    > Bumps [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) from 6.9.0 to 6.10.0.
+    > - [Release notes](https://github.com/prettier/eslint-config-prettier/releases)
+    > - [Changelog](https://github.com/prettier/eslint-config-prettier/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/prettier/eslint-config-prettier/compare/v6.9.0...v6.10.0)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`e25dc4c`](https://github.com/sinonjs/samsam/commit/e25dc4cb54ad94502a1f8a3dcc0164399fb16aa7)
+  Bump lint-staged from 9.5.0 to 10.0.7 (dependabot-preview[bot])
+    >
+    > Bumps [lint-staged](https://github.com/okonet/lint-staged) from 9.5.0 to 10.0.7.
+    > - [Release notes](https://github.com/okonet/lint-staged/releases)
+    > - [Commits](https://github.com/okonet/lint-staged/compare/v9.5.0...v10.0.7)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`5377183`](https://github.com/sinonjs/samsam/commit/5377183736419bbd286ac369029039e838bcfbf3)
+  Bump eslint-plugin-jsdoc from 19.2.0 to 21.0.0 (dependabot-preview[bot])
+    >
+    > Bumps [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) from 19.2.0 to 21.0.0.
+    > - [Release notes](https://github.com/gajus/eslint-plugin-jsdoc/releases)
+    > - [Commits](https://github.com/gajus/eslint-plugin-jsdoc/compare/v19.2.0...v21.0.0)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`43cc893`](https://github.com/sinonjs/samsam/commit/43cc8930a79de9f4cd427d1df7f17fc564ff81dc)
+  Bump mocha from 6.2.2 to 7.0.1 (dependabot-preview[bot])
+    >
+    > Bumps [mocha](https://github.com/mochajs/mocha) from 6.2.2 to 7.0.1.
+    > - [Release notes](https://github.com/mochajs/mocha/releases)
+    > - [Changelog](https://github.com/mochajs/mocha/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/mochajs/mocha/compare/v6.2.2...v7.0.1)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`4d47192`](https://github.com/sinonjs/samsam/commit/4d47192bb751e14e7ca2e4582794fa96c51ae477)
+  Bump husky from 3.1.0 to 4.2.1 (dependabot-preview[bot])
+    >
+    > Bumps [husky](https://github.com/typicode/husky) from 3.1.0 to 4.2.1.
+    > - [Release notes](https://github.com/typicode/husky/releases)
+    > - [Changelog](https://github.com/typicode/husky/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/typicode/husky/compare/v3.1.0...v4.2.1)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+_Released on 2020-02-18._
+
 ## 4.2.2
 
 - [`c600d6c`](https://github.com/sinonjs/samsam/commit/c600d6cb6c1bec8d65bc718bd9268311204597bc)
