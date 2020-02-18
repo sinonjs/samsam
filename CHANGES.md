@@ -1,5 +1,21 @@
 # Changes
 
+## 5.0.1
+
+- [`fe5d035`](https://github.com/sinonjs/samsam/commit/fe5d03532ea6cdbec857c49d18392d668cca8ef2)
+  Bump jsdom from 15.2.1 to 16.2.0 (dependabot-preview[bot])
+    >
+    > Bumps [jsdom](https://github.com/jsdom/jsdom) from 15.2.1 to 16.2.0.
+    > - [Release notes](https://github.com/jsdom/jsdom/releases)
+    > - [Changelog](https://github.com/jsdom/jsdom/blob/master/Changelog.md)
+    > - [Commits](https://github.com/jsdom/jsdom/compare/15.2.1...16.2.0)
+    >
+    > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+- [`910af18`](https://github.com/sinonjs/samsam/commit/910af18be1bd57c6237399ca04cbef91d994a38a)
+  Remove maintenance junk from CHANGES.md (Morgan Roderick)
+
+_Released on 2020-02-18._
+
 ## 5.0.0
 
 - [`f288430`](https://github.com/sinonjs/samsam/commit/f2884309c9bf68b02ecfda3bd1df8d7a7a31686b)
