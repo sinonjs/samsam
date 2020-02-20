@@ -1,5 +1,15 @@
 # Changes
 
+## 5.0.2
+
+- [`f9e845a`](https://github.com/sinonjs/samsam/commit/f9e845a52ba50916df91335d2003a81a808a4ade)
+  Bump formatio to latest major (Morgan Roderick)
+    >
+    > This will remove some duplication in Sinon, see https://github.com/sinonjs/sinon/issues/2224
+    >
+
+_Released on 2020-02-20._
+
 ## 5.0.1
 
 - [`fe5d035`](https://github.com/sinonjs/samsam/commit/fe5d03532ea6cdbec857c49d18392d668cca8ef2)
