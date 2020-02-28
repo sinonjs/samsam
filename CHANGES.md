@@ -1,5 +1,16 @@
 # Changes
 
+## 5.0.3
+
+- [`9d2add0`](https://github.com/sinonjs/samsam/commit/9d2add01eba85eb17ddb91ac22404fb6c23e8d39)
+  Remove unused @sinonjs/formatio (Morgan Roderick)
+    >
+    > As can be seen with searching the codebase, @sinonjs/formatio is never
+    > imported, and is thus not a direct dependency of @sinonjs/samsam.
+    >
+
+_Released on 2020-02-28._
+
 ## 5.0.2
 
 - [`f9e845a`](https://github.com/sinonjs/samsam/commit/f9e845a52ba50916df91335d2003a81a808a4ade)
