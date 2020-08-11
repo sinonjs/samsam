@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="None">
   
+  
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>samsam - samsam</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <title>samsam</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="." class="icon icon-home"> samsam</a>
         <div role="search">
@@ -45,33 +47,124 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href=".">samsam</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#samsam">samsam</a></li>
-    
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">samsam</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#predicate-functions">Predicate functions</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#predicate-functions">Predicate functions</a></li>
-        
-            <li><a class="toctree-l3" href="#comparison-functions">Comparison functions</a></li>
-        
-            <li><a class="toctree-l3" href="#combining-matchers">Combining matchers</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#isargumentsvalue">isArguments(value)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isnegzerovalue">isNegZero(value)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iselementvalue">isElement(value)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issetvalue">isSet(value)</a>
+    </li>
         </ul>
-    
-
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparison-functions">Comparison functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#identicalx-y">identical(x, y)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deepequalactual-expectation">deepEqual(actual, expectation)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matcher">Matcher</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchany">sinon.match.any</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchdefined">sinon.match.defined</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchtruthy">sinon.match.truthy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchfalsy">sinon.match.falsy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchbool">sinon.match.bool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchnumber">sinon.match.number</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchstring">sinon.match.string</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchobject">sinon.match.object</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchfunc">sinon.match.func</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcharray">sinon.match.array</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcharraydeepequalsarr">sinon.match.array.deepEquals(arr)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcharraystartswitharr">sinon.match.array.startsWith(arr)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcharrayendswitharr">sinon.match.array.endsWith(arr)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcharraycontainsarr">sinon.match.array.contains(arr)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchmap">sinon.match.map</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchmapdeepequalsmap">sinon.match.map.deepEquals(map)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchmapcontainsmap">sinon.match.map.contains(map)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchset">sinon.match.set</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchsetdeepequalsset">sinon.match.set.deepEquals(set)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchsetcontainsset">sinon.match.set.contains(set)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchregexp">sinon.match.regexp</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchdate">sinon.match.date</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchsymbol">sinon.match.symbol</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchinarray">sinon.match.in(array)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchsameref">sinon.match.same(ref)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchtypeoftype">sinon.match.typeOf(type)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchinstanceoftype">sinon.match.instanceOf(type)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchhasproperty-expectation">sinon.match.has(property[, expectation])</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchhasownproperty-expectation">sinon.match.hasOwn(property[, expectation])</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchhasnestedpropertypath-expectation">sinon.match.hasNested(propertyPath[, expectation])</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatcheverymatcher">sinon.match.every(matcher)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sinonmatchsomematcher">sinon.match.some(matcher)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#combining-matchers">Combining matchers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#matchobject-matcher">match(object, matcher)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#string-matcher">String matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#boolean-matcher">Boolean matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#regular-expression-matcher">Regular expression matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#number-matcher">Number matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#function-matcher">Function matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#object-matcher">Object matcher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dom-elements">DOM elements</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,6 +192,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -320,7 +414,9 @@ will return <code>true</code> if <code>matcher.test(object)</code> returns truth
 all properties of <code>matcher</code> matches corresponding properties in <code>object</code>,
 <code>match</code> returns <code>true</code>. Note that the object matcher does not care if the
 number of properties in the two objects are the same - only if all properties in
-the matcher recursively matches ones in <code>object</code>.</p>
+the matcher recursively matches ones in <code>object</code>. If supported, this object matchers
+include <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a>
+in the comparison.</p>
 <pre><code class="javascript">// true
 samsam.match(&quot;123&quot;, {
     test: function (arg) {
@@ -367,7 +463,7 @@ samsam.match(el, {
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -377,7 +473,7 @@ samsam.match(el, {
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/sinonjs/samsam/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -389,11 +485,16 @@ samsam.match(el, {
     <script>var base_url = '.';</script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 1.0.4
-Build Date UTC : 2020-02-28 14:52:38
+MkDocs version : 1.1.2
+Build Date UTC : 2020-08-11 07:43:12.060390+00:00
 -->
