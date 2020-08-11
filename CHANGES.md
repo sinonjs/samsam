@@ -1,5 +1,14 @@
 # Changes
 
+## 5.1.0
+
+- [`820c296`](https://github.com/sinonjs/samsam/commit/820c2961f70208367e1c072ae9a581eefd0d8d18)
+  Evaluate symbol keys for object matchers (#206) (Joel Bradshaw)
+    >
+    > * Make match() work for objects with symbol keys
+
+_Released on 2020-08-11._
+
 ## 5.0.3
 
 - [`9d2add0`](https://github.com/sinonjs/samsam/commit/9d2add01eba85eb17ddb91ac22404fb6c23e8d39)
