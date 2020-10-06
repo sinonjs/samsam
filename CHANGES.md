@@ -1,5 +1,12 @@
 # Changes
 
+## 5.2.0
+
+- [`f27b87c`](https://github.com/sinonjs/samsam/commit/f27b87cbd493a09e4a3181cf36f503facbbb23fb)
+  Add match.json (Maximilian Antoni)
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2020-10-06._
+
 ## 5.1.0
 
 - [`820c296`](https://github.com/sinonjs/samsam/commit/820c2961f70208367e1c072ae9a581eefd0d8d18)
