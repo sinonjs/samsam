@@ -46,6 +46,7 @@
     "type-detect": "^4.0.8"
   },
   "devDependencies": {
+    "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.0",
     "@sinonjs/referee": "^5.0.0",
     "@studio/changes": "^2.0.0",
     "benchmark": "2.1.4",
@@ -54,7 +55,6 @@
     "eslint-config-sinon": "^4.0.0",
     "eslint-plugin-ie11": "^1.0.0",
     "eslint-plugin-jsdoc": "^22.1.0",
-    "eslint-plugin-local-rules": "^0.1.1",
     "eslint-plugin-mocha": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^4.2.1",
