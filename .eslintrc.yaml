@@ -25,7 +25,7 @@ globals:
 plugins:
   - ie11
   - jsdoc
-  - local-rules
+  - "@sinonjs/no-prototype-methods"
 
 rules:
   strict: [error, "global"]
@@ -34,7 +34,7 @@ rules:
   ie11/no-for-in-const: error
   ie11/no-loop-func: warn
   ie11/no-weak-collections: error
-  local-rules/no-prototype-methods: error
+  "@sinonjs/no-prototype-methods/no-prototype-methods": error
 
 overrides:
   - files: "*.test.*"
@@ -69,7 +69,7 @@ overrides:
       jsdoc/require-returns-description: off
       jsdoc/require-returns-type: off
       jsdoc/valid-types: off
-      local-rules/no-prototype-methods: off
+      "@sinonjs/no-prototype-methods/no-prototype-methods": off
       max-nested-callbacks:
         - warn
         - 6
