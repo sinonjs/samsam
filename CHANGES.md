@@ -1,5 +1,15 @@
 # Changes
 
+## 5.3.0
+
+- [`fd8aabd`](https://github.com/sinonjs/samsam/commit/fd8aabd3768c199abc717dc6d793ef136419be72)
+  Generate .d.ts from JSDoc (Morgan Roderick)
+    >
+    > See https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/
+    >
+
+_Released on 2020-11-16._
+
 ## 5.2.0
 
 - [`f27b87c`](https://github.com/sinonjs/samsam/commit/f27b87cbd493a09e4a3181cf36f503facbbb23fb)
