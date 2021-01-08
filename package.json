@@ -16,7 +16,7 @@
   },
   "scripts": {
     "benchmark": "node lib/deep-equal-benchmark.js",
-    "build": "run-s build:dist-folder build:bundle build:type-defs",
+    "build": "npm run build:dist-folder && npm run build:bundle && npm run build:type-defs",
     "build:bundle": "rollup -c",
     "build:dist-folder": "mkdirp dist",
     "build:type-defs": "tsc",
@@ -69,7 +69,6 @@
     "mkdirp": "^1.0.3",
     "mocha": "^7.0.1",
     "mochify": "^6.6.0",
-    "npm-run-all": "^4.1.2",
     "nyc": "^15.0.0",
     "prettier": "^1.18.2",
     "proxyquire": "^2.1.3",
