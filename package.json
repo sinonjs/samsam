@@ -6,7 +6,7 @@
   "author": "Christian Johansen",
   "license": "BSD-3-Clause",
   "main": "./lib/samsam",
-  "types": "./dist/samsam.d.ts",
+  "types": "./types/samsam.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/sinonjs/samsam.git"
@@ -16,10 +16,7 @@
   },
   "scripts": {
     "benchmark": "node lib/deep-equal-benchmark.js",
-    "build": "npm run build:dist-folder && npm run build:bundle && npm run build:type-defs",
-    "build:bundle": "rollup -c",
-    "build:dist-folder": "mkdirp dist",
-    "build:type-defs": "tsc",
+    "build": "rm -rf types && tsc",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "lint": "eslint .",
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
@@ -37,10 +34,10 @@
     "jsdom-global": false
   },
   "files": [
-    "dist/",
     "docs/",
     "lib/",
-    "!lib/**/*.test.js"
+    "!lib/**/*.test.js",
+    "types/"
   ],
   "dependencies": {
     "@sinonjs/commons": "^1.6.0",
