@@ -38,6 +38,15 @@ jobs:
             - node_modules
       - *persist-step
 
+  prettier:
+    <<: *work-dir
+    docker:
+      - image: node
+    steps:
+      - *attach-step
+      - run:
+          name: prettier
+          command: npm run prettier:check
   lint:
     <<: *work-dir
     docker:
@@ -78,12 +87,14 @@ jobs:
           name: Test
           command: npm test
 
-
 workflows:
   version: 2
   samsam:
     jobs:
       - install-dependencies
+      - prettier:
+          requires:
+            - install-dependencies
       - lint:
           requires:
             - install-dependencies
