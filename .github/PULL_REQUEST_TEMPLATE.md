@@ -4,9 +4,10 @@
 > Example: Fix issue #123456 by re-structuring the colour selection conditional in method `paintBlue`
 -->
 
-
 <!-- (Problem in detail) - optional -->
+
 #### Background
+
 <!--
 > When relevant, give a more thorough description of what the problem the PR is trying to solve. Examples of good topics for this section are:
 > * Link to an existing GitHub issue describing the problem
@@ -15,9 +16,10 @@
 > * Discussion of different approaches to solving this problem and why you chose your proposed solution
 -->
 
-
 <!-- (Solution in detail) - optional -->
+
 #### Solution
+
 <!--
 > When contributing code (and not just fixing typos, documentation and configuration), please describe why/how your solution works. This helps reviewers spot any mistakes in the implementation.
 >
@@ -26,8 +28,8 @@
 > Then your reviewer might spot a mistake in the implementation, if `paintBlue()` uses the colour red.
 -->
 
-
 <!-- mandatory -->
+
 #### How to verify
 
 1. Check out this branch
