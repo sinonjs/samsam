@@ -87,5 +87,10 @@
       "rollup.config.js",
       "lib/deep-equal-benchmark.js"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
