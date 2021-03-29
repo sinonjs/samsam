@@ -1,16 +1,13 @@
 extends:
-  - sinon
-  - "plugin:prettier/recommended"
-  - "plugin:jsdoc/recommended"
+  - "@sinonjs/eslint-config"
 
-env:
-  browser: true
-  node: true
+plugins:
+  - "@sinonjs/no-prototype-methods"
+
+rules:
+  "@sinonjs/no-prototype-methods/no-prototype-methods": error
 
 globals:
-  Map: false
-  Set: false
-  Symbol: false
   BigInt: false
   Int8Array: false
   Uint8Array: false
@@ -22,65 +19,9 @@ globals:
   Float32Array: false
   Float64Array: false
 
-plugins:
-  - ie11
-  - jsdoc
-  - "@sinonjs/no-prototype-methods"
-
-rules:
-  strict: [error, "global"]
-
-  ie11/no-collection-args: error
-  ie11/no-for-in-const: error
-  ie11/no-loop-func: warn
-  ie11/no-weak-collections: error
-  "@sinonjs/no-prototype-methods/no-prototype-methods": error
-
 overrides:
   - files: "*.test.*"
-    plugins:
-      - mocha
-    env:
-      mocha: true
     rules:
-      jsdoc/check-alignment: off
-      jsdoc/check-examples: off
-      jsdoc/check-indentation: off
-      jsdoc/check-param-names: off
-      jsdoc/check-syntax: off
-      jsdoc/check-tag-names: off
-      jsdoc/check-types: off
-      jsdoc/implements-on-classes: off
-      jsdoc/match-description: off
-      jsdoc/newline-after-description: off
-      jsdoc/no-types: off
-      jsdoc/no-undefined-types: off
-      jsdoc/require-description: off
-      jsdoc/require-description-complete-sentence: off
-      jsdoc/require-example: off
-      jsdoc/require-hyphen-before-param-description: off
-      jsdoc/require-jsdoc: off
-      jsdoc/require-param: off
-      jsdoc/require-param-description: off
-      jsdoc/require-param-name: off
-      jsdoc/require-param-type: off
-      jsdoc/require-returns: off
-      jsdoc/require-returns-check: off
-      jsdoc/require-returns-description: off
-      jsdoc/require-returns-type: off
-      jsdoc/valid-types: off
       "@sinonjs/no-prototype-methods/no-prototype-methods": off
-      max-nested-callbacks:
-        - warn
-        - 6
-      mocha/handle-done-callback: error
-      mocha/no-exclusive-tests: error
-      mocha/no-global-tests: error
-      mocha/no-hooks-for-single-case: off
-      mocha/no-identical-title: error
-      mocha/no-mocha-arrows: error
-      mocha/no-nested-tests: error
-      mocha/no-return-and-callback: error
-      mocha/no-sibling-hooks: error
-      mocha/no-skipped-tests: error
-      mocha/no-top-level-hooks: error
+      max-nested-callbacks: off
+
