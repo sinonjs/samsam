@@ -240,10 +240,10 @@ observably distinguishable.</p>
 <li>They are both arrays containing elements that are all deepEqual</li>
 <li>
 <p>They are objects with the same set of properties, and each property
-  in <code>actual</code> is deepEqual to the corresponding property in <code>expectation</code></p>
-</li>
-<li>
-<p><code>actual</code> can have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a> that are missing from <code>expectation</code></p>
+    in <code>actual</code> is deepEqual to the corresponding property in <code>expectation</code></p>
+<ul>
+<li><code>actual</code> can have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a> that are missing from <code>expectation</code></li>
+</ul>
 </li>
 </ul>
 <h3 id="matcher">Matcher</h3>
@@ -301,17 +301,17 @@ with these built in matchers:</p>
 <p>Requires the value to strictly equal <code>ref</code>.</p>
 <h4 id="sinonmatchtypeoftype"><code>sinon.match.typeOf(type)</code></h4>
 <p>Requires the value to be of the given type, where <code>type</code> can be one of
-    <code>"undefined"</code>,
-    <code>"null"</code>,
-    <code>"boolean"</code>,
-    <code>"number"</code>,
-    <code>"string"</code>,
-    <code>"object"</code>,
-    <code>"function"</code>,
-    <code>"array"</code>,
-    <code>"regexp"</code>,
-    <code>"date"</code> or
-    <code>"symbol"</code>.</p>
+<code>"undefined"</code>,
+<code>"null"</code>,
+<code>"boolean"</code>,
+<code>"number"</code>,
+<code>"string"</code>,
+<code>"object"</code>,
+<code>"function"</code>,
+<code>"array"</code>,
+<code>"regexp"</code>,
+<code>"date"</code> or
+<code>"symbol"</code>.</p>
 <h4 id="sinonmatchinstanceoftype"><code>sinon.match.instanceOf(type)</code></h4>
 <p>Requires the value to be an instance of the given <code>type</code>.</p>
 <h4 id="sinonmatchhasproperty-expectation"><code>sinon.match.has(property[, expectation])</code></h4>
@@ -325,12 +325,12 @@ with these built in matchers:</p>
 <pre><code class="javascript">sinon.match.hasNested(&quot;a[0].b.c&quot;);
 
 // Where actual is something like
-var actual = { &quot;a&quot;: [{ &quot;b&quot;: { &quot;c&quot;: 3 } }] };
+var actual = { a: [{ b: { c: 3 } }] };
 
 sinon.match.hasNested(&quot;a.b.c&quot;);
 
 // Where actual is something like
-var actual = { &quot;a&quot;: { &quot;b&quot;: { &quot;c&quot;: 3 } } };
+var actual = { a: { b: { c: 3 } } };
 </code></pre>
 
 <h4 id="sinonmatcheverymatcher"><code>sinon.match.every(matcher)</code></h4>
@@ -353,7 +353,14 @@ function returns <code>true</code> if the matcher is a case-insensitive substrin
 <code>object</code> as a string.</p>
 <pre><code class="javascript">samsam.match(&quot;Give me something&quot;, &quot;Give&quot;); //true
 samsam.match(&quot;Give me something&quot;, &quot;sumptn&quot;); // false
-samsam.match({ toString: function () { return &quot;yeah&quot;; } }, &quot;Yeah!&quot;); // true
+samsam.match(
+    {
+        toString: function () {
+            return &quot;yeah&quot;;
+        },
+    },
+    &quot;Yeah!&quot;
+); // true
 </code></pre>
 
 <p>The last example is not symmetric. When the matcher is a string, the <code>object</code>
@@ -369,7 +376,14 @@ matches <code>true</code>, and only <code>false</code> matches <code>false</code
 any object with a <code>test</code> method will be used as a matcher this way.</p>
 <pre><code class="javascript">samsam.match(&quot;Give me something&quot;, /^[a-z\s]$/i); // true
 samsam.match(&quot;Give me something&quot;, /[0-9]/); // false
-samsam.match({ toString: function () { return &quot;yeah!&quot;; } }, /yeah/); // true
+samsam.match(
+    {
+        toString: function () {
+            return &quot;yeah!&quot;;
+        },
+    },
+    /yeah/
+); // true
 samsam.match(234, /[a-z]/); // false
 </code></pre>
 
@@ -377,7 +391,14 @@ samsam.match(234, /[a-z]/); // false
 <p>When the matcher is a number, the assertion will pass if <code>object == matcher</code>.</p>
 <pre><code class="javascript">samsam.match(&quot;123&quot;, 123); // true
 samsam.match(&quot;Give me something&quot;, 425); // false
-samsam.match({ toString: function () { return &quot;42&quot;; } }, 42); // true
+samsam.match(
+    {
+        toString: function () {
+            return &quot;42&quot;;
+        },
+    },
+    42
+); // true
 samsam.match(234, 1234); // false
 </code></pre>
 
@@ -397,11 +418,16 @@ samsam.match(&quot;Give me something&quot;, function () {
 });
 
 // true
-samsam.match({
-    toString: function () {
-        return &quot;42&quot;;
+samsam.match(
+    {
+        toString: function () {
+            return &quot;42&quot;;
+        },
+    },
+    function () {
+        return true;
     }
-}, function () { return true; });
+);
 
 // false
 samsam.match(234, function () {});
@@ -421,19 +447,22 @@ in the comparison.</p>
 samsam.match(&quot;123&quot;, {
     test: function (arg) {
         return arg == 123;
-    }
+    },
 });
 
 // false
 samsam.match({}, { prop: 42 });
 
 // true
-samsam.match({
-    name: &quot;Chris&quot;,
-    profession: &quot;Programmer&quot;
-}, {
-    name: &quot;Chris&quot;
-});
+samsam.match(
+    {
+        name: &quot;Chris&quot;,
+        profession: &quot;Programmer&quot;,
+    },
+    {
+        name: &quot;Chris&quot;,
+    }
+);
 
 // false
 samsam.match(234, { name: &quot;Chris&quot; });
@@ -447,7 +476,7 @@ you to compare several properties with one call:</p>
 samsam.match(el, {
     tagName: &quot;h2&quot;,
     className: &quot;item&quot;,
-    innerHTML: &quot;Howdy&quot;
+    innerHTML: &quot;Howdy&quot;,
 });
 </code></pre>
               
@@ -496,5 +525,5 @@ samsam.match(el, {
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-01-13 16:51:56.601386+00:00
+Build Date UTC : 2021-03-30 10:51:33.522840+00:00
 -->
