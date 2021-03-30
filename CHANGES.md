@@ -1,5 +1,14 @@
 # Changes
 
+## 6.0.0
+
+- [`95d1dce`](https://github.com/sinonjs/samsam/commit/95d1dce07f47b7bbb84111c42f44ecd9466dc2c8)
+  Use @sinonjs/eslint-config (Morgan Roderick)
+    >
+    > This drops support for legacy runtimes like IE11, legacy Edge, Safari 9 and the like
+
+_Released on 2021-03-30._
+
 ## 5.3.1
 
 - [`04e0faa`](https://github.com/sinonjs/samsam/commit/04e0faa88d8a08325c6d70febed9dad4e7eeabfe)
