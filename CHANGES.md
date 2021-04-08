@@ -1,5 +1,19 @@
 # Changes
 
+## 6.0.1
+
+- [`decfafe`](https://github.com/sinonjs/samsam/commit/decfafe72d8b2d159cfc49440a8f4af6d3e9c574)
+  Bump y18n from 4.0.0 to 4.0.1 (dependabot[bot])
+    >
+    > Bumps [y18n](https://github.com/yargs/y18n) from 4.0.0 to 4.0.1.
+    > - [Release notes](https://github.com/yargs/y18n/releases)
+    > - [Changelog](https://github.com/yargs/y18n/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/yargs/y18n/commits)
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+
+_Released on 2021-04-08._
+
 ## 6.0.0
 
 - [`95d1dce`](https://github.com/sinonjs/samsam/commit/95d1dce07f47b7bbb84111c42f44ecd9466dc2c8)
