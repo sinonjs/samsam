@@ -9,6 +9,7 @@ rules:
 
 globals:
   BigInt: false
+  Promise: false
   Int8Array: false
   Uint8Array: false
   Uint8ClampedArray: false
