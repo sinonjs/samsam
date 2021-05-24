@@ -1,5 +1,12 @@
 # Changes
 
+## 6.0.2
+
+- [`144204d`](https://github.com/sinonjs/samsam/commit/144204d505526d5c382cb2f3dc2c2dd1378fe12d)
+  Fix deep equal comparison between promises (#217) (David G. Miguel)
+
+_Released on 2021-05-24._
+
 ## 6.0.1
 
 - [`decfafe`](https://github.com/sinonjs/samsam/commit/decfafe72d8b2d159cfc49440a8f4af6d3e9c574)
