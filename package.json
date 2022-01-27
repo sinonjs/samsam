@@ -28,7 +28,7 @@
     "test-headless": "mochify --no-detect-globals --recursive -R dot --plugin [ proxyquire-universal ] \"./lib/*.test.js\"",
     "prettier:check": "prettier --check '**/*.{js,css,md}'",
     "prettier:write": "prettier --write '**/*.{js,css,md}'",
-    "preversion": "npm run test-check-coverage",
+    "preversion": "./check-external-dependencies.sh && npm run test-check-coverage",
     "version": "changes --commits --footer",
     "postversion": "git push --follow-tags && npm publish --access public"
   },
