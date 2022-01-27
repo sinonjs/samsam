@@ -1,5 +1,20 @@
 # Changes
 
+## 6.1.0
+
+- [`6955f94`](https://github.com/sinonjs/samsam/commit/6955f94b414049f21971c19a0f97c1b5f922126f)
+  fix (#226) (Stuart Dotson)
+- [`f1a1f30`](https://github.com/sinonjs/samsam/commit/f1a1f306018166ad76ab1a1a71d400fc9373f7d0)
+  add support for iterables (#225) (Stuart Dotson)
+- [`2bc9f80`](https://github.com/sinonjs/samsam/commit/2bc9f80ab886653f4995c60b09af93e0216a9724)
+  Bump path-parse from 1.0.6 to 1.0.7 (dependabot[bot])
+- [`64dfb5d`](https://github.com/sinonjs/samsam/commit/64dfb5d1f477033b5e5a3b7e037e921048ddef5e)
+  Bump ws from 6.2.1 to 6.2.2 (dependabot[bot])
+- [`d41050b`](https://github.com/sinonjs/samsam/commit/d41050be94d214b15a2cecb18cc0c36d6141fd82)
+  Bump browserslist from 4.16.3 to 4.16.6 (dependabot[bot])
+
+_Released on 2022-01-27._
+
 ## 6.0.2
 
 - [`144204d`](https://github.com/sinonjs/samsam/commit/144204d505526d5c382cb2f3dc2c2dd1378fe12d)
