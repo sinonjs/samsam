@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,9 +25,8 @@
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href="." class="icon icon-home"> samsam</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -195,6 +194,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -322,7 +322,7 @@ with these built in matchers:</p>
 <h4 id="sinonmatchhasnestedpropertypath-expectation"><code>sinon.match.hasNested(propertyPath[, expectation])</code></h4>
 <p>Requires the value to define the given <code>propertyPath</code>. Dot (<code>prop.prop</code>) and bracket (<code>prop[0]</code>) notations are supported as in <a href="https://lodash.com/docs/4.4.2#get">Lodash.get</a>.</p>
 <p>The propertyPath might be inherited via the prototype chain. If the optional expectation is given, the value at the propertyPath is deeply compared with the expectation. The expectation can be another matcher.</p>
-<pre><code class="javascript">sinon.match.hasNested(&quot;a[0].b.c&quot;);
+<pre><code class="language-javascript">sinon.match.hasNested(&quot;a[0].b.c&quot;);
 
 // Where actual is something like
 var actual = { a: [{ b: { c: 3 } }] };
@@ -332,17 +332,15 @@ sinon.match.hasNested(&quot;a.b.c&quot;);
 // Where actual is something like
 var actual = { a: { b: { c: 3 } } };
 </code></pre>
-
 <h4 id="sinonmatcheverymatcher"><code>sinon.match.every(matcher)</code></h4>
 <p>Requires <strong>every</strong> element of an <code>Array</code>, <code>Set</code> or <code>Map</code>, or alternatively <strong>every</strong> value of an <code>Object</code> to match the given <code>matcher</code>.</p>
 <h4 id="sinonmatchsomematcher"><code>sinon.match.some(matcher)</code></h4>
 <p>Requires <strong>any</strong> element of an <code>Array</code>, <code>Set</code> or <code>Map</code>, or alternatively <strong>any</strong> value of an <code>Object</code> to match the given <code>matcher</code>.</p>
 <h2 id="combining-matchers">Combining matchers</h2>
 <p>All matchers implement <code>and</code> and <code>or</code>. This allows to logically combine mutliple matchers. The result is a new matchers that requires both (and) or one of the matchers (or) to return <code>true</code>.</p>
-<pre><code class="javascript">var stringOrNumber = sinon.match.string.or(sinon.match.number);
+<pre><code class="language-javascript">var stringOrNumber = sinon.match.string.or(sinon.match.number);
 var bookWithPages = sinon.match.instanceOf(Book).and(sinon.match.has(&quot;pages&quot;));
 </code></pre>
-
 <h3 id="matchobject-matcher"><code>match(object, matcher)</code></h3>
 <p>Creates a custom matcher to perform partial equality check. Compares <code>object</code>
 with matcher according a wide set of rules:</p>
@@ -351,7 +349,7 @@ with matcher according a wide set of rules:</p>
 When the matcher is a string, <code>object</code> is converted to a string, and the
 function returns <code>true</code> if the matcher is a case-insensitive substring of
 <code>object</code> as a string.</p>
-<pre><code class="javascript">samsam.match(&quot;Give me something&quot;, &quot;Give&quot;); //true
+<pre><code class="language-javascript">samsam.match(&quot;Give me something&quot;, &quot;Give&quot;); //true
 samsam.match(&quot;Give me something&quot;, &quot;sumptn&quot;); // false
 samsam.match(
     {
@@ -362,7 +360,6 @@ samsam.match(
     &quot;Yeah!&quot;
 ); // true
 </code></pre>
-
 <p>The last example is not symmetric. When the matcher is a string, the <code>object</code>
 is coerced to a string - in this case using <code>toString</code>. Changing the order of
 the arguments would cause the matcher to be an object, in which case different
@@ -374,7 +371,7 @@ matches <code>true</code>, and only <code>false</code> matches <code>false</code
 <p>When the matcher is a regular expression, the function will pass if
 <code>object.test(matcher)</code> is <code>true</code>. <code>match</code> is written in a generic way, so
 any object with a <code>test</code> method will be used as a matcher this way.</p>
-<pre><code class="javascript">samsam.match(&quot;Give me something&quot;, /^[a-z\s]$/i); // true
+<pre><code class="language-javascript">samsam.match(&quot;Give me something&quot;, /^[a-z\s]$/i); // true
 samsam.match(&quot;Give me something&quot;, /[0-9]/); // false
 samsam.match(
     {
@@ -386,10 +383,9 @@ samsam.match(
 ); // true
 samsam.match(234, /[a-z]/); // false
 </code></pre>
-
 <h4 id="number-matcher">Number matcher</h4>
 <p>When the matcher is a number, the assertion will pass if <code>object == matcher</code>.</p>
-<pre><code class="javascript">samsam.match(&quot;123&quot;, 123); // true
+<pre><code class="language-javascript">samsam.match(&quot;123&quot;, 123); // true
 samsam.match(&quot;Give me something&quot;, 425); // false
 samsam.match(
     {
@@ -401,13 +397,12 @@ samsam.match(
 ); // true
 samsam.match(234, 1234); // false
 </code></pre>
-
 <h4 id="function-matcher">Function matcher</h4>
 <p>When the matcher is a function, it is called with <code>object</code> as its only
 argument. <code>match</code> returns <code>true</code> if the function returns <code>true</code>. A strict
 match is performed against the return value, so a boolean <code>true</code> is required,
 truthy is not enough.</p>
-<pre><code class="javascript">// true
+<pre><code class="language-javascript">// true
 samsam.match(&quot;123&quot;, function (exp) {
     return exp == &quot;123&quot;;
 });
@@ -432,7 +427,6 @@ samsam.match(
 // false
 samsam.match(234, function () {});
 </code></pre>
-
 <h4 id="object-matcher">Object matcher</h4>
 <p>As mentioned above, if an object matcher defines a <code>test</code> method, <code>match</code>
 will return <code>true</code> if <code>matcher.test(object)</code> returns truthy.</p>
@@ -443,7 +437,7 @@ number of properties in the two objects are the same - only if all properties in
 the matcher recursively matches ones in <code>object</code>. If supported, this object matchers
 include <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbolic properties</a>
 in the comparison.</p>
-<pre><code class="javascript">// true
+<pre><code class="language-javascript">// true
 samsam.match(&quot;123&quot;, {
     test: function (arg) {
         return arg == 123;
@@ -467,11 +461,10 @@ samsam.match(
 // false
 samsam.match(234, { name: &quot;Chris&quot; });
 </code></pre>
-
 <h4 id="dom-elements">DOM elements</h4>
 <p><code>match</code> can be very helpful when comparing DOM elements, because it allows
 you to compare several properties with one call:</p>
-<pre><code class="javascript">var el = document.getElementById(&quot;myEl&quot;);
+<pre><code class="language-javascript">var el = document.getElementById(&quot;myEl&quot;);
 
 samsam.match(el, {
     tagName: &quot;h2&quot;,
@@ -503,15 +496,18 @@ samsam.match(el, {
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/sinonjs/samsam/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sinonjs/samsam/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
 </div>
     <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
     <script defer>
@@ -524,6 +520,6 @@ samsam.match(el, {
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-05-24 19:05:29.302794+00:00
+MkDocs version : 1.2.3
+Build Date UTC : 2022-01-27 11:59:30.506044+00:00
 -->
