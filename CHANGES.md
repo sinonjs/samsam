@@ -1,5 +1,15 @@
 # Changes
 
+## 6.1.1
+
+- [`0a89fbd`](https://github.com/sinonjs/samsam/commit/0a89fbd6e186a7343a6369e924457e2fa14df710)
+  Bump cached-path-relative from 1.0.2 to 1.1.0 (#227) (dependabot[bot])
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`88a3fca`](https://github.com/sinonjs/samsam/commit/88a3fca262b3a4bc29b53635bb8ec5c2a3925a5b)
+  Install missing dependency mkdocs and update lock file version (Carl-Erik Kopseng)
+
+_Released on 2022-01-28._
+
 ## 6.1.0
 
 - [`6955f94`](https://github.com/sinonjs/samsam/commit/6955f94b414049f21971c19a0f97c1b5f922126f)
