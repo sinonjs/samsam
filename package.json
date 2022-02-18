@@ -61,7 +61,7 @@
     "lint-staged": "^10.0.7",
     "microtime": "3.0.0",
     "mkdirp": "^1.0.3",
-    "mocha": "^7.0.1",
+    "mocha": "^9.2.0",
     "mochify": "^6.6.0",
     "nyc": "^15.0.0",
     "prettier": "^2.2.1",
