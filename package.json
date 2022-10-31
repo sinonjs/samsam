@@ -63,7 +63,7 @@
     "microtime": "3.0.0",
     "mkdirp": "^1.0.3",
     "mocha": "^10.1.0",
-    "mochify": "^6.6.0",
+    "mochify": "^9.2.0",
     "nyc": "^15.0.0",
     "prettier": "^2.2.1",
     "proxyquire": "^2.1.3",
