@@ -50,7 +50,7 @@
   "devDependencies": {
     "@sinonjs/eslint-config": "^4.0.0",
     "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.0",
-    "@sinonjs/referee": "^5.0.0",
+    "@sinonjs/referee": "^9.1.1",
     "@studio/changes": "^2.0.0",
     "benchmark": "2.1.4",
     "husky": "^4.2.1",
