@@ -1,5 +1,130 @@
 # Changes
 
+## 6.1.2
+
+- [`aa3badb`](https://github.com/sinonjs/samsam/commit/aa3badb23f6e415635c6f96f95dc2c807a1b5f09)
+  Fix to compare input for iteratables. (#229) (Shuhei Aoyama)
+- [`58480cc`](https://github.com/sinonjs/samsam/commit/58480ccce764d0eb247f38e395c5638cc1183b9c)
+  npm audit fix (Morgan Roderick)
+- [`1b9c378`](https://github.com/sinonjs/samsam/commit/1b9c37837d8d2126558bc8e55f910c0b025fd6a6)
+  Upgrade benchmark and microtime to latest (Morgan Roderick)
+- [`3d6e322`](https://github.com/sinonjs/samsam/commit/3d6e3223fc306a789e8e7081aba57e192f4d9988)
+  Remove unused mkdirp dependency (Morgan Roderick)
+- [`4388ea7`](https://github.com/sinonjs/samsam/commit/4388ea7e1b131fb96184b25ef96eaee1637061f2)
+  Upgrade typescript to latest (Morgan Roderick)
+- [`4e29ee0`](https://github.com/sinonjs/samsam/commit/4e29ee0e8178456e7a22b766feb98a22042fe808)
+  Upgrade prettier to latest (Morgan Roderick)
+- [`f2c548e`](https://github.com/sinonjs/samsam/commit/f2c548efea9ff0a4a3afadfded1f3dafd651bf1e)
+  Upgrade nyc to latest (Morgan Roderick)
+- [`3bda5a3`](https://github.com/sinonjs/samsam/commit/3bda5a30a46ebcfd9c1d2da358d8968b9d357dd3)
+  Upgrade mochify to latest (Morgan Roderick)
+- [`30ac30b`](https://github.com/sinonjs/samsam/commit/30ac30bc9734ce1d610568af40e639f85fba088c)
+  Upgrade mocha to latest (Morgan Roderick)
+- [`fd9aa60`](https://github.com/sinonjs/samsam/commit/fd9aa60b12e271b94a536f61e95255fbc97eeacf)
+  Upgrade jsdoc to latest (Morgan Roderick)
+- [`501fef7`](https://github.com/sinonjs/samsam/commit/501fef7e43f3de5b4311a9cda5921b7b78e1f9ee)
+  Upgrade husky to latest (Morgan Roderick)
+    >
+    > See:
+    >
+    > * https://typicode.github.io/husky/#/?id=migrate-from-v4-to-v8
+    > * https://github.com/typicode/husky-4-to-8
+    >
+- [`10857c2`](https://github.com/sinonjs/samsam/commit/10857c280f5d45bee37438553419010acfc5835b)
+  Upgrade @studio/changes to latest (Morgan Roderick)
+- [`c31f564`](https://github.com/sinonjs/samsam/commit/c31f564f96e5ea0e87e857f868d74fdad176a9c8)
+  Upgrade @sinonjs/eslint-config to latest (Morgan Roderick)
+- [`08ed814`](https://github.com/sinonjs/samsam/commit/08ed81491683caa904e837053d71cfe7072fe92f)
+  Upgrade @sinonjs/referee to latest (Morgan Roderick)
+- [`a16c58b`](https://github.com/sinonjs/samsam/commit/a16c58bf024fb66c114113e7d341ad7ac09f4331)
+  Bump jsdom from 16.2.2 to 16.5.0 (dependabot[bot])
+    >
+    > Bumps [jsdom](https://github.com/jsdom/jsdom) from 16.2.2 to 16.5.0.
+    > - [Release notes](https://github.com/jsdom/jsdom/releases)
+    > - [Changelog](https://github.com/jsdom/jsdom/blob/master/Changelog.md)
+    > - [Commits](https://github.com/jsdom/jsdom/compare/16.2.2...16.5.0)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: jsdom
+    >   dependency-type: direct:development
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+- [`8b7d7de`](https://github.com/sinonjs/samsam/commit/8b7d7de1ab1af1deb9288ee00de6ecf7054bc85c)
+  Bump shell-quote from 1.6.1 to 1.7.3 (dependabot[bot])
+    >
+    > Bumps [shell-quote](https://github.com/substack/node-shell-quote) from 1.6.1 to 1.7.3.
+    > - [Release notes](https://github.com/substack/node-shell-quote/releases)
+    > - [Changelog](https://github.com/substack/node-shell-quote/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/substack/node-shell-quote/compare/1.6.1...1.7.3)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: shell-quote
+    >   dependency-type: indirect
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+- [`409866f`](https://github.com/sinonjs/samsam/commit/409866f2b14ecafe2baa94752f8c0d8496128409)
+  chore: Set permissions for GitHub actions (Morgan Roderick)
+    >
+    > Restrict the GitHub token permissions only to the required ones; this
+    > way, even if the attackers will succeed in compromising your workflow,
+    > they won’t be able to do much.
+    >
+    > Included permissions for the action. https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions
+    > https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+    >
+    > https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+    >
+    > Keeping your GitHub Actions and workflows secure Part 1: Preventing pwn requests
+    >
+    > See sinonjs/sinon#2461
+    >
+- [`5a7317f`](https://github.com/sinonjs/samsam/commit/5a7317f9ec84ac85b4465541caa3102d107fc9c3)
+  Update README (Morgan Roderick)
+    >
+    > The default branch was renamed
+    >
+- [`4354403`](https://github.com/sinonjs/samsam/commit/4354403b0b016ab4a4d973e7027eb3ffcce6cda7)
+  Verify lockfileVersion (Morgan Roderick)
+- [`be7df9e`](https://github.com/sinonjs/samsam/commit/be7df9ea82130bdde4b0009df64d26a20bd3aca7)
+  Merge prettier, lint into static-analysis (Morgan Roderick)
+- [`2e1bf94`](https://github.com/sinonjs/samsam/commit/2e1bf94dd885a277a199b80da9463b2a41bd58f5)
+  Upgrade mocha to latest (Morgan Roderick)
+- [`3bab205`](https://github.com/sinonjs/samsam/commit/3bab205592974a9d63bcc8275ebcc9e8f0a59f6f)
+  Bump hosted-git-info from 3.0.4 to 3.0.8 (dependabot[bot])
+    >
+    > Bumps [hosted-git-info](https://github.com/npm/hosted-git-info) from 3.0.4 to 3.0.8.
+    > - [Release notes](https://github.com/npm/hosted-git-info/releases)
+    > - [Changelog](https://github.com/npm/hosted-git-info/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/npm/hosted-git-info/compare/v3.0.4...v3.0.8)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: hosted-git-info
+    >   dependency-type: indirect
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+- [`14d3637`](https://github.com/sinonjs/samsam/commit/14d36378703d291ad08aa43a676fe90b40f0676f)
+  Bump ajv from 6.10.2 to 6.12.6 (dependabot[bot])
+    >
+    > Bumps [ajv](https://github.com/ajv-validator/ajv) from 6.10.2 to 6.12.6.
+    > - [Release notes](https://github.com/ajv-validator/ajv/releases)
+    > - [Commits](https://github.com/ajv-validator/ajv/compare/v6.10.2...v6.12.6)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: ajv
+    >   dependency-type: indirect
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+
+_Released by Morgan Roderick on 2022-10-31._
+
 ## 6.1.1
 
 - [`0a89fbd`](https://github.com/sinonjs/samsam/commit/0a89fbd6e186a7343a6369e924457e2fa14df710)
