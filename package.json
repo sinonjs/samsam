@@ -61,7 +61,6 @@
     "jsdom-global": "^3.0.2",
     "lint-staged": "^10.0.7",
     "microtime": "3.0.0",
-    "mkdirp": "^1.0.3",
     "mocha": "^10.1.0",
     "mochify": "^9.2.0",
     "nyc": "^15.1.0",
