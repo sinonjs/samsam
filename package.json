@@ -30,7 +30,8 @@
     "prettier:write": "prettier --write '**/*.{js,css,md}'",
     "preversion": "./check-external-dependencies.sh && npm run test-check-coverage",
     "version": "changes --commits --footer",
-    "postversion": "git push --follow-tags && npm publish --access public"
+    "postversion": "git push --follow-tags && npm publish --access public",
+    "prepare": "husky install"
   },
   "browser": {
     "jsdom": false,
@@ -53,7 +54,7 @@
     "@sinonjs/referee": "^9.1.1",
     "@studio/changes": "^2.2.0",
     "benchmark": "2.1.4",
-    "husky": "^4.2.1",
+    "husky": "^8.0.0",
     "jquery": "^3.4.1",
     "jsdoc": "^3.6.3",
     "jsdom": "^16.2.0",
@@ -81,10 +82,5 @@
       "rollup.config.js",
       "lib/deep-equal-benchmark.js"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
