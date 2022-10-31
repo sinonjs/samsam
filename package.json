@@ -48,7 +48,7 @@
     "type-detect": "^4.0.8"
   },
   "devDependencies": {
-    "@sinonjs/eslint-config": "^4.0.0",
+    "@sinonjs/eslint-config": "^4.0.6",
     "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.0",
     "@sinonjs/referee": "^9.1.1",
     "@studio/changes": "^2.0.0",
