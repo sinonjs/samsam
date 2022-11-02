@@ -1,5 +1,12 @@
 # Changes
 
+## 7.0.0
+
+- [`85a9acb`](https://github.com/sinonjs/samsam/commit/85a9acb772ab7739a597052c7ba8e21006c74b94)
+  Stop testing in Node 12, start testing in Node 18, 19 (Morgan Roderick)
+
+_Released by Morgan Roderick on 2022-11-02._
+
 ## 6.1.3
 
 - [`15295d9`](https://github.com/sinonjs/samsam/commit/15295d93358708dc61efe7348e43e968feb56723)
