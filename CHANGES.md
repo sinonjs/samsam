@@ -1,5 +1,25 @@
 # Changes
 
+## 6.1.3
+
+- [`15295d9`](https://github.com/sinonjs/samsam/commit/15295d93358708dc61efe7348e43e968feb56723)
+  Fix #237: Use jQuery#is() for jQuery equality (Morgan Roderick)
+    >
+    > In f1a1f306018166ad76ab1a1a71d400fc9373f7d0 we added support for
+    > [Javascript iteraction protocols][0].
+    >
+    > jQuery objects happen to have iteration protocols, so they would trigger
+    > the new codepath. However, that code path uses `Array.from` on the
+    > input, which doesn't play nice with jQuery's serializer.
+    >
+    > Luckily, [jQuery has the `is()` method for comparing its objects][1].
+    >
+    > [0]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
+    > [1]: https://api.jquery.com/is/
+    >
+
+_Released by Morgan Roderick on 2022-11-02._
+
 ## 6.1.2
 
 - [`aa3badb`](https://github.com/sinonjs/samsam/commit/aa3badb23f6e415635c6f96f95dc2c807a1b5f09)
