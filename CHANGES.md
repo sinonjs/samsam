@@ -1,5 +1,15 @@
 # Changes
 
+## 7.0.1
+
+- [`fb6573a`](https://github.com/sinonjs/samsam/commit/fb6573a68f4408616fc6f93a6aca377c7c163bf2)
+  Prefer @sinonjs/commons@2 (Morgan Roderick)
+    >
+    > That makes ES2017 support explicit
+    >
+
+_Released by Morgan Roderick on 2022-11-07._
+
 ## 7.0.0
 
 - [`85a9acb`](https://github.com/sinonjs/samsam/commit/85a9acb772ab7739a597052c7ba8e21006c74b94)
