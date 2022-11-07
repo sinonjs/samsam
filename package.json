@@ -44,7 +44,7 @@
     "types/"
   ],
   "dependencies": {
-    "@sinonjs/commons": "^1.6.0",
+    "@sinonjs/commons": "^2.0.0",
     "lodash.get": "^4.4.2",
     "type-detect": "^4.0.8"
   },
