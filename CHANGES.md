@@ -1,5 +1,12 @@
 # Changes
 
+## 8.0.0
+
+- [`5f88086`](https://github.com/sinonjs/samsam/commit/5f88086df8aef2d427a9ccca588df2498738b654)
+  fix: ensure nothing can mutate the exported 'message' (Carl-Erik Kopseng)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2023-03-26._
+
 ## 7.0.1
 
 - [`fb6573a`](https://github.com/sinonjs/samsam/commit/fb6573a68f4408616fc6f93a6aca377c7c163bf2)
