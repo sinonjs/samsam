@@ -357,7 +357,7 @@ samsam.match(
             return &quot;yeah&quot;;
         },
     },
-    &quot;Yeah!&quot;
+    &quot;Yeah!&quot;,
 ); // true
 </code></pre>
 <p>The last example is not symmetric. When the matcher is a string, the <code>object</code>
@@ -379,7 +379,7 @@ samsam.match(
             return &quot;yeah!&quot;;
         },
     },
-    /yeah/
+    /yeah/,
 ); // true
 samsam.match(234, /[a-z]/); // false
 </code></pre>
@@ -393,7 +393,7 @@ samsam.match(
             return &quot;42&quot;;
         },
     },
-    42
+    42,
 ); // true
 samsam.match(234, 1234); // false
 </code></pre>
@@ -421,7 +421,7 @@ samsam.match(
     },
     function () {
         return true;
-    }
+    },
 );
 
 // false
@@ -455,7 +455,7 @@ samsam.match(
     },
     {
         name: &quot;Chris&quot;,
-    }
+    },
 );
 
 // false
@@ -521,5 +521,5 @@ samsam.match(el, {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2023-03-26 12:53:08.981852+00:00
+Build Date UTC : 2024-09-12 23:24:51.617899+00:00
 -->
