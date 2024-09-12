@@ -1,5 +1,15 @@
 # Changes
 
+## 8.0.1
+
+- [`ca41112`](https://github.com/sinonjs/samsam/commit/ca41112f977bf24a365e96c9d7993b358fb37721)
+  Update all dependencies (#247) (Carl-Erik Kopseng)
+
+- [`153c0a7`](https://github.com/sinonjs/samsam/commit/153c0a769edc50d80aa1e56bbc7953d01a4e4045)
+  Fix matcher cyclic object infinite recursion issue (#245) (Phil Spitzer)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2024-09-12._
+
 ## 8.0.0
 
 - [`5f88086`](https://github.com/sinonjs/samsam/commit/5f88086df8aef2d427a9ccca588df2498738b654)
