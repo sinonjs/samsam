@@ -1,5 +1,19 @@
 # Changes
 
+## 8.0.2
+
+- [`631d739`](https://github.com/sinonjs/samsam/commit/631d73979cdceff930b05ce9d4b8ae21d6732b20)
+  Fix low-hanging 'npm audit' fruits (Carl-Erik Kopseng)
+- [`a3cdefa`](https://github.com/sinonjs/samsam/commit/a3cdefa75148838c7c720379711734835e964352)
+  Bump elliptic from 6.5.4 to 6.5.7 (#248) (dependabot[bot])
+    > Signed-off-by: dependabot[bot] <support@github.com>    >
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`47e4b73`](https://github.com/sinonjs/samsam/commit/47e4b73beaac88b70a4613d9d3f7996b52792d22)
+  Bump browserify-sign from 4.2.1 to 4.2.3 (#249) (dependabot[bot])
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2024-09-12._
+
 ## 8.0.1
 
 - [`ca41112`](https://github.com/sinonjs/samsam/commit/ca41112f977bf24a365e96c9d7993b358fb37721)
