@@ -9,10 +9,10 @@ The issue tracker is solely meant for posting bugs, feature requests and non-usa
 
 > We understand you have a problem and are in a hurry, but please provide us with some info to make it much more likely for your issue to be understood, worked on and resolved quickly.
 
--   library version : _please verify that the bug exists in the latest release_
--   Environment :
--   Example URL :
--   Other libraries you are using:
+- library version : _please verify that the bug exists in the latest release_
+- Environment :
+- Example URL :
+- Other libraries you are using:
 
 **What did you expect to happen?**
 
