@@ -45,7 +45,6 @@
   ],
   "dependencies": {
     "@sinonjs/commons": "^3.0.1",
-    "lodash.get": "^4.4.2",
     "type-detect": "^4.1.0"
   },
   "devDependencies": {
