@@ -1,5 +1,31 @@
 # Changes
 
+## 8.0.3
+
+- [`630f2ae`](https://github.com/sinonjs/samsam/commit/630f2ae2deed0409b91364431a82b52a63cb46eb)
+  Bump elliptic from 6.5.7 to 6.6.1 (#258) (dependabot[bot])
+    >
+    > Bumps [elliptic](https://github.com/indutny/elliptic) from 6.5.7 to 6.6.1.
+    > - [Commits](https://github.com/indutny/elliptic/compare/v6.5.7...v6.6.1)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: elliptic
+    >   dependency-version: 6.6.1
+    >   dependency-type: indirect
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`dd18c1c`](https://github.com/sinonjs/samsam/commit/dd18c1ccb9bcf00bc33316a2f3706cc32c3c1cc5)
+  Remove deprecated lodash.get (#254) (Yashar Fakhari)
+    >
+    > We need slightly more than a direct substitution of `.get()` with `?.` because `?.` handles individual properties and hasNested function needs to handle nested paths which are not single properties.
+    >
+    > To handle nested paths, the regex is breaking the property string into its individual components and removes empty values.  The loop traverses the object, moving one level deeper for each part of the path so we can safely access the next property (part) of the current object (`current = current?.[part]`).  This handles cases where any intermediate property might be `undefined` or `null`.  If `current` becomes `undefined` at any point we know the path doesn't exist, so we can immediately return `false`.  After the loop is finished then the value of `current` is the value we want to get.
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2025-07-25._
+
 ## 8.0.2
 
 - [`631d739`](https://github.com/sinonjs/samsam/commit/631d73979cdceff930b05ce9d4b8ae21d6732b20)
