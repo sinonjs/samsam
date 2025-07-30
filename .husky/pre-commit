@@ -1,1 +1,6 @@
-lint-staged
+npm run lint
+npm run prettier:check
+npm run build
+npm run test-check-coverage
+npm run test-headless
+

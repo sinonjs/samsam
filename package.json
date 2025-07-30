@@ -11,9 +11,10 @@
     "type": "git",
     "url": "https://github.com/sinonjs/samsam.git"
   },
-  "lint-staged": {
-    "*.{js,css,md}": "prettier --check",
-    "*.js": "eslint"
+  "mochify": {
+    "spec": "./lib/*.test.js",
+    "bundle": "esbuild --bundle --sourcemap=inline --define:process.env.NODE_DEBUG=\"\" --external:fs --external:path --external:module --external:assert --external:os --external:timers --external:timers/promises --platform=browser",
+    "bundle_stdin": "require"
   },
   "scripts": {
     "benchmark": "node lib/deep-equal-benchmark.js",
@@ -23,15 +24,15 @@
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/*.test.js",
     "test-cloud": "npm run test-headless -- --wd",
-    "test-check-coverage": "npm run test-coverage && nyc check-coverage --branches 100 --functions 100 --lines 100",
-    "test-coverage": "nyc --all --reporter text --reporter html --reporter lcovonly npm run test",
-    "test-headless": "mochify --no-detect-globals --recursive -R dot --plugin [ proxyquire-universal ] \"./lib/*.test.js\"",
+    "test-check-coverage": "npm run test-coverage && c8 check-coverage --branches 100 --functions 100 --lines 100",
+    "test-coverage": "c8 --all --reporter text --reporter html --reporter lcovonly npm run test",
+    "test-headless": "mochify --driver puppeteer",
     "prettier:check": "prettier --check '**/*.{js,css,md}'",
     "prettier:write": "prettier --write '**/*.{js,css,md}'",
     "preversion": "./check-external-dependencies.sh && npm run test-check-coverage",
     "version": "changes --commits --footer",
     "postversion": "git push --follow-tags && npm publish --access public",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "browser": {
     "jsdom": false,
@@ -48,37 +49,39 @@
     "type-detect": "^4.1.0"
   },
   "devDependencies": {
+    "@mochify/cli": "^0.4.1",
+    "@mochify/driver-puppeteer": "^0.4.0",
     "@sinonjs/eslint-config": "^5.0.3",
     "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.1",
     "@sinonjs/referee": "^11.0.1",
     "@studio/changes": "^3.0.0",
     "benchmark": "^2.1.4",
+    "c8": "^10.1.3",
+    "esbuild": "^0.25.8",
+    "get-stdin": "^9.0.0",
     "husky": "^9.1.7",
     "jquery": "^3.7.1",
     "jsdoc": "^4.0.4",
     "jsdom": "^26.1.0",
     "jsdom-global": "^3.0.2",
-    "lint-staged": "^15.5.2",
     "microtime": "^3.1.1",
-    "mocha": "^11.2.2",
-    "mochify": "^9.2.0",
-    "nyc": "^17.1.0",
-    "prettier": "^3.5.3",
+    "mocha": "^11.7.1",
+    "prettier": "^3.6.2",
     "proxyquire": "^2.1.3",
-    "proxyquire-universal": "^3.0.1",
-    "proxyquireify": "^3.2.1",
     "typescript": "^5.8.3"
   },
-  "nyc": {
+  "c8": {
     "exclude": [
       "**/*.test.js",
       "coverage/**",
+      "coverage.cjs",
       "dist/**",
-      "out/**",
-      "site/**",
       "eslint-local-rules.js",
+      "lib/deep-equal-benchmark.js",
+      "out/**",
       "rollup.config.js",
-      "lib/deep-equal-benchmark.js"
+      "site/**",
+      "types/**"
     ]
   }
 }
