@@ -56,7 +56,6 @@ Deep equal comparison. Two values are "deep equal" if:
 - They are both arrays containing elements that are all deepEqual
 - They are objects with the same set of properties, and each property
   in `actual` is deepEqual to the corresponding property in `expectation`
-
     - `actual` can have [symbolic properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) that are missing from `expectation`
 
 ### Matcher
