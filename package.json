@@ -11,9 +11,13 @@
     "type": "git",
     "url": "https://github.com/sinonjs/samsam.git"
   },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --check",
+    "*.js": "eslint"
+  },
   "mochify": {
     "spec": "./lib/*.test.js",
-    "bundle": "esbuild --bundle --sourcemap=inline --define:process.env.NODE_DEBUG=\"\" --external:fs --external:path --external:module --external:assert --external:os --external:timers --external:timers/promises --platform=browser",
+    "bundle": "esbuild --bundle --sourcemap=inline --define:process.env.NODE_DEBUG=\"\" --define:process.env.IS_BUNDLE=\"true\" --external:fs --external:path --external:module --external:assert --external:os --external:timers --external:timers/promises --platform=browser",
     "bundle_stdin": "require"
   },
   "scripts": {
@@ -64,11 +68,12 @@
     "jsdoc": "^4.0.4",
     "jsdom": "^26.1.0",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^16.1.4",
     "microtime": "^3.1.1",
     "mocha": "^11.7.1",
     "prettier": "^3.6.2",
     "proxyquire": "^2.1.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "c8": {
     "exclude": [

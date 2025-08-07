@@ -18,7 +18,9 @@ const esbuild = require("esbuild");
         bundle: true,
         sourcemap: "inline",
         sourcesContent: true,
-        define: { global: "window", "process.env.NODE_DEBUG": '""' },
+        define: {
+            global: "window",
+        },
         external: ["fs"],
         target: "es2022",
         color: true,
