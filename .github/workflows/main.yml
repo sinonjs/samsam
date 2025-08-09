@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: mansona/npm-lockfile-version@v1
+        with:
+          version: 3
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
