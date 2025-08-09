@@ -1,9 +1,12 @@
 name: Node CI
 
-on: [push]
+on: [push, pull_request]
 
 permissions:
   contents: read
+
+env:
+  HUSKY: 0
 
 jobs:
   static-analysis:
@@ -11,21 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: mansona/npm-lockfile-version@v1
+        with:
+          version: 3
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Cache modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: Install dependencies
         run: |
           npm ci
-        env:
-          HUSKY_SKIP_INSTALL: 1
+      - name: Build TypeScript types
+        run: |
+          npm run build
       - name: Prettier
         run: |
           npm run prettier:check
@@ -39,49 +39,36 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "16"
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: "22"
+          cache: 'npm'
       - name: Install dependencies
         run: |
           npm ci
-        env:
-          HUSKY_SKIP_INSTALL: 1
       - name: Integration
         run: |
           npm run test-check-coverage
       - name: Upload coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F unit -s coverage/lcov.info
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: true
 
   test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [20, 22]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: Install dependencies
         run: |
           npm ci
-        env:
-          HUSKY_SKIP_INSTALL: 1
       - name: npm test
         run: npm test
