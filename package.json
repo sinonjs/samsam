@@ -28,7 +28,7 @@
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/*.test.js",
     "test-cloud": "./test-cloud.sh",
-    "test-check-coverage": "npm run test-coverage && c8 check-coverage --branches 100 --functions 100 --lines 100",
+    "test-check-coverage": "c8 --all --reporter text --reporter html --reporter lcovonly --check-coverage --branches 100 --functions 100 --lines 100 npm run test",
     "test-coverage": "c8 --all --reporter text --reporter html --reporter lcovonly npm run test",
     "test-headless": "mochify --driver puppeteer",
     "prettier:check": "prettier --check '**/*.{js,css,md}'",

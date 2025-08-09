@@ -1,11 +1,33 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Dependency updates weekly batched by semver
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
+      day: "wednesday"
+      time: "00:00"  # UTC
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      major-updates:
+        update-types: ["major"]
+      minor-updates:
+        update-types: ["minor"]
+      patch-updates:
+        update-types: ["patch"]
+
+  # GitHub Actions updates monthly
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "wednesday"
+      time: "01:00"
+    open-pull-requests-limit: 10
+
+    commit-message:
+      prefix: "chore"
+      include: "scope"
