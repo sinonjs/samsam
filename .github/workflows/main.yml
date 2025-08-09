@@ -87,3 +87,26 @@ jobs:
           HUSKY_SKIP_INSTALL: 1
       - name: npm test
         run: npm test
+
+  saucelabs-test:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+      - name: Install dependencies
+        run: |
+          npm ci
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 1
+      - name: Saucelabs test
+        env:
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+        run: |
+          npm run test-cloud
+
+

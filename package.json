@@ -27,7 +27,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/*.test.js",
-    "test-cloud": "npm run test-headless -- --wd",
+    "test-cloud": "./test-cloud.sh",
     "test-check-coverage": "npm run test-coverage && c8 check-coverage --branches 100 --functions 100 --lines 100",
     "test-coverage": "c8 --all --reporter text --reporter html --reporter lcovonly npm run test",
     "test-headless": "mochify --driver puppeteer",
@@ -55,6 +55,7 @@
   "devDependencies": {
     "@mochify/cli": "^0.4.1",
     "@mochify/driver-puppeteer": "^0.4.0",
+    "@mochify/driver-webdriver": "^0.2.1",
     "@sinonjs/eslint-config": "^5.0.3",
     "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.1",
     "@sinonjs/referee": "^11.0.1",
