@@ -1,5 +1,96 @@
 # Changes
 
+## 9.0.0
+
+- [`af7b6ee`](https://github.com/sinonjs/samsam/commit/af7b6ee2ab55a57d6006fd37b56b9a53e7c739ab)
+  chore: GitHub CI improvements (#262) (Yashar Fakhari)
+    >
+    > Github Actions Workflow:
+    > - Use Node 22 and the latest checkout github action for code coverage job
+    > - Replace HUSKY_SKIP_INSTALL with HUSKY=0 for Husky v9 compatibility
+    > - Set HUSKY env variable once for entire workflow
+    > - Use built-in npm module caching instead of manual cache setup
+    > - Add TypeScript build step to static analysis
+    > - Use codecov's official action for uploading coverage reports
+    > - Remove redundant npm test execution from test-check-coverage
+    > - Add automerge job for Dependabot
+    >
+    > Dependabot Config:
+    > - Set npm updates to weekly on Wednesdays at 00:00 UTC
+    > - Batch npm update PRs by semver into separate major, minor, and patch groups
+    > - Set monthly GitHub Actions updates on Wednesdays at 01:00 UTC
+- [`3fbe355`](https://github.com/sinonjs/samsam/commit/3fbe355d19bdaf9be1d5911dde8619eedac3a99e)
+  fix #251: compare props on the prototype chain (#267) (Carl-Erik Kopseng)
+    >
+    > * fix #251: compare enumerable props on the prototype
+    >
+    > * Negate test: Arguments with same contents as an array is deeply equal
+    >
+    > Co-authored-by: Morgan Roderick <20321+mroderick@users.noreply.github.com>
+    >
+    > ---------
+    >
+    > Co-authored-by: Morgan Roderick <20321+mroderick@users.noreply.github.com>
+- [`61cf8ba`](https://github.com/sinonjs/samsam/commit/61cf8ba8a80a775828abb64954bc491da8ae97e8)
+  Bump lint-staged from 16.1.4 to 16.1.5 (#266) (dependabot[bot])
+    >
+    > Bumps [lint-staged](https://github.com/lint-staged/lint-staged) from 16.1.4 to 16.1.5.
+    > - [Release notes](https://github.com/lint-staged/lint-staged/releases)
+    > - [Changelog](https://github.com/lint-staged/lint-staged/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/lint-staged/lint-staged/compare/v16.1.4...v16.1.5)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: lint-staged
+    >   dependency-version: 16.1.5
+    >   dependency-type: direct:development
+    >   update-type: version-update:semver-patch
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`08ab1b5`](https://github.com/sinonjs/samsam/commit/08ab1b555169c88776f1b7e09c0347604fc91b87)
+  Update eslint-config to include ES2024 (Carl-Erik Kopseng)
+- [`4cd3416`](https://github.com/sinonjs/samsam/commit/4cd3416579e7b5cc69c6fb69c3a392f800e41748)
+  Create dependabot.yml (#265) (Carl-Erik Kopseng)
+- [`8d76aa0`](https://github.com/sinonjs/samsam/commit/8d76aa0f9f498bc304946ce3b8208666fe5e852f)
+  fix: ignore coverage for mochify.webdriver.cjs (#264) (Yashar Fakhari)
+- [`7cd4092`](https://github.com/sinonjs/samsam/commit/7cd4092a5cf26781c18beeaee5b737995bddc7a8)
+  Upgrade package-lock.json version and add workflow runs on PRs (#263) (Carl-Erik Kopseng)
+    >
+    > * Upgrade package-lock.json version
+    >
+    > * Update Node version
+    >
+    > * Run on PRs as well
+    >
+    > * Add Sauce Labs runs
+- [`55611bd`](https://github.com/sinonjs/samsam/commit/55611bd6c3f74d91167a115f1488b7f3ddcfab6d)
+  Chore: toolchain upgrades (#260) (Yashar Fakhari)
+    >
+    > * Chore: toolchain upgrades
+    > - Upgrade mochify to @mochify/cli (esbuild-based)
+    > - Replace nyc with c8 for test coverage
+    >
+- [`ffcfbf3`](https://github.com/sinonjs/samsam/commit/ffcfbf3e3c57f8c3165e169e3aaa5b284d8adaef)
+  Bump pbkdf2 from 3.1.2 to 3.1.3 (#259) (dependabot[bot])
+    >
+    > Bumps [pbkdf2](https://github.com/crypto-browserify/pbkdf2) from 3.1.2 to 3.1.3.
+    > - [Changelog](https://github.com/browserify/pbkdf2/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/crypto-browserify/pbkdf2/compare/v3.1.2...v3.1.3)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: pbkdf2
+    >   dependency-version: 3.1.3
+    >   dependency-type: indirect
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2025-08-10._
+
 ## 8.0.3
 
 - [`630f2ae`](https://github.com/sinonjs/samsam/commit/630f2ae2deed0409b91364431a82b52a63cb46eb)
