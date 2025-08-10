@@ -84,6 +84,7 @@
       "dist/**",
       "eslint-local-rules.js",
       "lib/deep-equal-benchmark.js",
+      "mochify.webdriver.cjs",
       "out/**",
       "rollup.config.js",
       "site/**",
