@@ -7,23 +7,16 @@ updates:
       interval: "weekly"
       day: "wednesday"
       time: "00:00"  # UTC
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 3
     commit-message:
       prefix: "chore"
       include: "scope"
-    groups:
-      major-updates:
-        update-types: ["major"]
-      minor-updates:
-        update-types: ["minor"]
-      patch-updates:
-        update-types: ["patch"]
 
-  # GitHub Actions updates monthly
+  # GitHub Actions updates quarterly
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "quarterly"
       day: "wednesday"
       time: "01:00"
     open-pull-requests-limit: 10
