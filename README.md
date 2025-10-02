@@ -8,6 +8,10 @@ Value identification and comparison functions
 
 Documentation: http://sinonjs.github.io/samsam/
 
+## Compatibility
+
+Follows the same compatibility approach as the rest of the Sinon libraries: evergreen browsers and the last 2 runtimes of Node. See the [compatibility docs for the main Sinon project](https://github.com/sinonjs/sinon/blob/main/COMPATIBILITY.md) for detailed information.
+
 ## Backers
 
 Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/sinon#backer)]
