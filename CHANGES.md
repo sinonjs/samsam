@@ -1,5 +1,71 @@
 # Changes
 
+## 9.0.1
+
+- [`03e2fa3`](https://github.com/sinonjs/samsam/commit/03e2fa318282dc38cee28c7bf9c2de3a59cb08e9)
+  test: load jquery after jsdom setup (Carl-Erik Kopseng)
+- [`8be51ca`](https://github.com/sinonjs/samsam/commit/8be51ca69c66c6ee32a68cdbc0b3ee261e892f66)
+  Upgrade deps (Carl-Erik Kopseng)
+- [`65a646a`](https://github.com/sinonjs/samsam/commit/65a646abe8399a3b9881ab25a2b41584a5f290f2)
+  fix: restore deepEqual key symmetry (#285) (Carl-Erik Kopseng)
+    >
+    > * chore: ignore local worktrees
+    >
+    > * test: cover deepEqual key symmetry regression
+    >
+    > * fix: restore deepEqual key symmetry
+    >
+    > * fix format
+- [`29aa7fb`](https://github.com/sinonjs/samsam/commit/29aa7fba5869c7a3e3984c6531ed84ba964738a1)
+  chore(deps): bump actions/setup-node from 4 to 5 (#273) (dependabot[bot])
+    >
+    > Bumps [actions/setup-node](https://github.com/actions/setup-node) from 4 to 5.
+    > - [Release notes](https://github.com/actions/setup-node/releases)
+    > - [Commits](https://github.com/actions/setup-node/compare/v4...v5)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: actions/setup-node
+    >   dependency-version: '5'
+    >   dependency-type: direct:production
+    >   update-type: version-update:semver-major
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`0a5ae72`](https://github.com/sinonjs/samsam/commit/0a5ae725ae84c80dfa76dc4927c92e3a8bb1b151)
+  chore(deps-dev): bump mocha from 11.7.1 to 11.7.4 (#275) (dependabot[bot])
+    >
+    > Bumps [mocha](https://github.com/mochajs/mocha) from 11.7.1 to 11.7.4.
+    > - [Release notes](https://github.com/mochajs/mocha/releases)
+    > - [Changelog](https://github.com/mochajs/mocha/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/mochajs/mocha/compare/v11.7.1...v11.7.4)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: mocha
+    >   dependency-version: 11.7.4
+    >   dependency-type: direct:development
+    >   update-type: version-update:semver-patch
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`252eaab`](https://github.com/sinonjs/samsam/commit/252eaabe950105d557de9bbbe7e2824d0b35c328)
+  ci: adjust dependabot config and code coverage upload (#269) (Yashar Fakhari)
+    >
+    > - Removed version grouping to prevent major updates from blocking CI
+    > - Reduced PR limit to 3 to match previous group count
+    > - Fix permission issue for Dependabot auto merge
+    > - Add support for CODECOV_TOKEN
+    > - Remove code coverage report upload as a blocking workflow step
+- [`3c371bd`](https://github.com/sinonjs/samsam/commit/3c371bd28f76ea46ef2433d4ffa6586cdf636d59)
+  clearer wording (Carl-Erik Kopseng)
+- [`97ad89c`](https://github.com/sinonjs/samsam/commit/97ad89cc6da6930e0e3395b0e2591e61e2ee9190)
+  Added compatibility section (Carl-Erik Kopseng)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2026-03-02._
+
 ## 9.0.0
 
 - [`af7b6ee`](https://github.com/sinonjs/samsam/commit/af7b6ee2ab55a57d6006fd37b56b9a53e7c739ab)
