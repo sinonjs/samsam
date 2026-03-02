@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Deep Equal Symmetry Implementation Plan - samsam</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deep Equal Symmetry Implementation Plan";
+        var mkdocs_page_input_path = "plans/2026-03-02-deep-equal-symmetry.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> samsam
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">samsam</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plans</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-02-deep-equal-symmetry-design/">Deep Equal Symmetry Design</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Deep Equal Symmetry Implementation Plan</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#task-1-add-regression-tests-for-symmetric-enumerable-string-keys">Task 1: Add Regression Tests For Symmetric Enumerable String Keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-2-restore-symmetric-enumerable-string-key-membership-checks">Task 2: Restore Symmetric Enumerable String-Key Membership Checks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-3-verify-the-fix-against-project-standards">Task 3: Verify The Fix Against Project Standards</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-4-prepare-release-notes-context">Task 4: Prepare Release Notes Context</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">samsam</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Plans</li>
+      <li class="breadcrumb-item active">Deep Equal Symmetry Implementation Plan</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sinonjs/samsam/edit/master/docs/plans/2026-03-02-deep-equal-symmetry.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="deep-equal-symmetry-implementation-plan">Deep Equal Symmetry Implementation Plan</h1>
+<blockquote>
+<p><strong>For Claude:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.</p>
+</blockquote>
+<p><strong>Goal:</strong> Restore symmetric enumerable string-key comparison in <code>deepEqual</code> without regressing prototype-chain support or the documented exception for extra symbol properties on <code>actual</code>.</p>
+<p><strong>Architecture:</strong> Keep the object-comparison flow in <code>lib/deep-equal.js</code>, but add an explicit enumerable string-key membership check so equal key counts are not treated as equal key sets. Preserve the prototype-chain enumeration introduced in <code>3fbe355</code> and leave symbol handling expectation-driven.</p>
+<p><strong>Tech Stack:</strong> Node.js, Mocha, ESLint, Samsam internals</p>
+<hr />
+<h3 id="task-1-add-regression-tests-for-symmetric-enumerable-string-keys">Task 1: Add Regression Tests For Symmetric Enumerable String Keys</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>lib/deep-equal.test.js</code></li>
+<li>Test: <code>lib/deep-equal.test.js</code></li>
+</ul>
+<p><strong>Step 1: Write the failing tests</strong></p>
+<p>Add tests that assert:</p>
+<pre><code class="language-js">assert.isFalse(
+    samsam.deepEqual({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, foo: undefined }),
+);
+</code></pre>
+<p>Add one prototype-chain variant with different enumerable getter names but equal enumerable key counts, and one symbol test proving this still passes:</p>
+<pre><code class="language-js">var symbol = Symbol(&quot;extra&quot;);
+var actual = { a: 1 };
+actual[symbol] = 2;
+assert.isTrue(samsam.deepEqual(actual, { a: 1 }));
+</code></pre>
+<p><strong>Step 2: Run test to verify it fails</strong></p>
+<p>Run: <code>npm test -- --grep "deepEqual"</code></p>
+<p>Expected: FAIL on the new same-count/different-key regression case.</p>
+<p><strong>Step 3: Commit</strong></p>
+<pre><code class="language-bash">git add lib/deep-equal.test.js
+git commit -m &quot;test: cover deepEqual key symmetry regression&quot;
+</code></pre>
+<h3 id="task-2-restore-symmetric-enumerable-string-key-membership-checks">Task 2: Restore Symmetric Enumerable String-Key Membership Checks</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>lib/deep-equal.js</code></li>
+<li>Test: <code>lib/deep-equal.test.js</code></li>
+</ul>
+<p><strong>Step 1: Write the minimal implementation</strong></p>
+<p>In <code>lib/deep-equal.js</code>, add a small helper or inline check that verifies enumerable string-key membership in both directions before descending into value comparison. Keep:</p>
+<ul>
+<li><code>allEnumerableKeysInProtoChain(...)</code></li>
+<li>existing recursion/cycle tracking</li>
+<li>expectation-only symbol traversal</li>
+</ul>
+<p>The implementation should reject objects when an enumerable string key exists on one side but not the other, even if the total key counts match.</p>
+<p><strong>Step 2: Run targeted tests</strong></p>
+<p>Run: <code>npm test -- --grep "deepEqual"</code></p>
+<p>Expected: PASS for the new regression tests and existing <code>deepEqual</code> coverage.</p>
+<p><strong>Step 3: Commit</strong></p>
+<pre><code class="language-bash">git add lib/deep-equal.js lib/deep-equal.test.js
+git commit -m &quot;fix: restore deepEqual key symmetry&quot;
+</code></pre>
+<h3 id="task-3-verify-the-fix-against-project-standards">Task 3: Verify The Fix Against Project Standards</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Verify: <code>lib/deep-equal.js</code></li>
+<li>Verify: <code>lib/deep-equal.test.js</code></li>
+</ul>
+<p><strong>Step 1: Run the full test suite</strong></p>
+<p>Run: <code>npm test</code></p>
+<p>Expected: PASS</p>
+<p><strong>Step 2: Run lint</strong></p>
+<p>Run: <code>npm run lint</code></p>
+<p>Expected: PASS</p>
+<p><strong>Step 3: Optional coverage confidence</strong></p>
+<p>Run: <code>npm run test-check-coverage</code></p>
+<p>Expected: PASS with 100% thresholds intact</p>
+<p><strong>Step 4: Commit verification state</strong></p>
+<pre><code class="language-bash">git add lib/deep-equal.js lib/deep-equal.test.js
+git commit -m &quot;chore: verify deepEqual symmetry fix&quot;
+</code></pre>
+<h3 id="task-4-prepare-release-notes-context">Task 4: Prepare Release Notes Context</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Review: <code>CHANGES.md</code></li>
+<li>Review: <code>docs/index.md</code></li>
+</ul>
+<p><strong>Step 1: Confirm docs stay accurate</strong></p>
+<p>Verify that <code>docs/index.md</code> already matches the intended behavior and does not need edits.</p>
+<p><strong>Step 2: Decide whether to add a changelog entry</strong></p>
+<p>If the project wants bug-fix release notes before cutting a release, add a short note describing:</p>
+<ul>
+<li>regression introduced by prototype-chain comparison change</li>
+<li>restored symmetric enumerable string-key equality</li>
+<li>no change to the extra-symbol exception on <code>actual</code></li>
+</ul>
+<p><strong>Step 3: Commit if documentation changes are needed</strong></p>
+<pre><code class="language-bash">git add CHANGES.md docs/index.md
+git commit -m &quot;docs: note deepEqual symmetry fix&quot;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-03-02-deep-equal-symmetry-design/" class="btn btn-neutral float-left" title="Deep Equal Symmetry Design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sinonjs/samsam/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../2026-03-02-deep-equal-symmetry-design/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
