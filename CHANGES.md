@@ -1,5 +1,12 @@
 # Changes
 
+## 9.0.2
+
+- [`1de64bb`](https://github.com/sinonjs/samsam/commit/1de64bb9c0a201d79bb0e8d8ec5887ef85fb0c89)
+  fix browser-bundled mochify tests (Carl-Erik Kopseng)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2026-03-02._
+
 ## 9.0.1
 
 - [`03e2fa3`](https://github.com/sinonjs/samsam/commit/03e2fa318282dc38cee28c7bf9c2de3a59cb08e9)
