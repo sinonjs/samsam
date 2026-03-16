@@ -1,5 +1,178 @@
 # Changes
 
+## 9.0.3
+
+- [`b415496`](https://github.com/sinonjs/samsam/commit/b41549625ff00c34d00886148d8e3d89fd1a86c4)
+  Fix Buffer deepEqual regression from prototype key comparison (#291) (Carl-Erik Kopseng)
+    >
+    > The prototype-chain comparison added in 3fbe355d19bdaf9be1d5911dde8619eedac3a99e made deepEqual read inherited enumerable Buffer accessors such as `offset`.
+    >
+    > Two Buffer instances with identical bytes can still have different `offset` values because small Buffers are often views into different positions in the same pooled backing store. That offset is allocator metadata, not part of the logical buffer value.
+    >
+    > Keep prototype enumerable-key support for URL-like objects, but use own enumerable keys for array-like values so Buffer equality stays content-based.
+    >
+    > * fix: make npm lint work in nested worktrees
+- [`2d85ed4`](https://github.com/sinonjs/samsam/commit/2d85ed47b69e0ca910caa89a1d96abbddb9dad3f)
+  chore(deps-dev): bump @sinonjs/eslint-config from 5.0.4 to 6.0.0 (#286) (dependabot[bot])
+    >
+    > Bumps [@sinonjs/eslint-config](https://github.com/sinonjs/eslint-config-sinon) from 5.0.4 to 6.0.0.
+    > - [Changelog](https://github.com/sinonjs/eslint-config/blob/main/CHANGES.md)
+    > - [Commits](https://github.com/sinonjs/eslint-config-sinon/compare/v5.0.4...v6.0.0)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: "@sinonjs/eslint-config"
+    >   dependency-version: 6.0.0
+    >   dependency-type: direct:development
+    >   update-type: version-update:semver-major
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`fd306ed`](https://github.com/sinonjs/samsam/commit/fd306ed5b70e7f1605fdfa904abbe045400eeda3)
+  chore(deps-dev): bump lint-staged from 16.3.1 to 16.3.2 (#287) (dependabot[bot])
+    >
+    > Bumps [lint-staged](https://github.com/lint-staged/lint-staged) from 16.3.1 to 16.3.2.
+    > - [Release notes](https://github.com/lint-staged/lint-staged/releases)
+    > - [Changelog](https://github.com/lint-staged/lint-staged/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/lint-staged/lint-staged/compare/v16.3.1...v16.3.2)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: lint-staged
+    >   dependency-version: 16.3.2
+    >   dependency-type: direct:development
+    >   update-type: version-update:semver-patch
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`8c595b2`](https://github.com/sinonjs/samsam/commit/8c595b2908ed4a9d832972b0886b7870c2c1d5f4)
+  chore(deps): bump the npm_and_yarn group across 1 directory with 5 updates (#288) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 5 updates in the / directory:
+    >
+    > | Package | From | To |
+    > | --- | --- | --- |
+    > | [glob](https://github.com/isaacs/node-glob) | `11.0.3` | `11.1.0` |
+    > | [glob](https://github.com/isaacs/node-glob) | `10.4.5` | `10.5.0` |
+    > | [minimatch](https://github.com/isaacs/minimatch) | `3.1.2` | `3.1.5` |
+    > | [basic-ftp](https://github.com/patrickjuchli/basic-ftp) | `5.0.5` | `5.2.0` |
+    > | [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) | `5.2.5` | `5.4.2` |
+    > | [lodash](https://github.com/lodash/lodash) | `4.17.21` | `4.17.23` |
+    > Updates `glob` from 11.0.3 to 11.1.0
+    > - [Changelog](https://github.com/isaacs/node-glob/blob/main/changelog.md)
+    > - [Commits](https://github.com/isaacs/node-glob/compare/v11.0.3...v11.1.0)
+    >
+    > Updates `glob` from 10.4.5 to 10.5.0
+    > - [Changelog](https://github.com/isaacs/node-glob/blob/main/changelog.md)
+    > - [Commits](https://github.com/isaacs/node-glob/compare/v11.0.3...v11.1.0)
+    >
+    > Updates `minimatch` from 3.1.2 to 3.1.5
+    > - [Changelog](https://github.com/isaacs/minimatch/blob/main/changelog.md)
+    > - [Commits](https://github.com/isaacs/minimatch/compare/v3.1.2...v3.1.5)
+    >
+    > Updates `basic-ftp` from 5.0.5 to 5.2.0
+    > - [Release notes](https://github.com/patrickjuchli/basic-ftp/releases)
+    > - [Changelog](https://github.com/patrickjuchli/basic-ftp/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/patrickjuchli/basic-ftp/compare/v5.0.5...v5.2.0)
+    >
+    > Updates `fast-xml-parser` from 5.2.5 to 5.4.2
+    > - [Release notes](https://github.com/NaturalIntelligence/fast-xml-parser/releases)
+    > - [Changelog](https://github.com/NaturalIntelligence/fast-xml-parser/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/NaturalIntelligence/fast-xml-parser/compare/v5.2.5...v5.4.2)
+    >
+    > Updates `lodash` from 4.17.21 to 4.17.23
+    > - [Release notes](https://github.com/lodash/lodash/releases)
+    > - [Commits](https://github.com/lodash/lodash/compare/4.17.21...4.17.23)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: glob
+    >   dependency-version: 11.1.0
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > - dependency-name: glob
+    >   dependency-version: 10.5.0
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > - dependency-name: minimatch
+    >   dependency-version: 3.1.5
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > - dependency-name: basic-ftp
+    >   dependency-version: 5.2.0
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > - dependency-name: fast-xml-parser
+    >   dependency-version: 5.4.2
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > - dependency-name: lodash
+    >   dependency-version: 4.17.23
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`2b517a8`](https://github.com/sinonjs/samsam/commit/2b517a8064d29cfcde0820df61305de2d4eb4486)
+  chore(deps): bump actions/checkout from 5 to 6 (#284) (dependabot[bot])
+    >
+    > Bumps [actions/checkout](https://github.com/actions/checkout) from 5 to 6.
+    > - [Release notes](https://github.com/actions/checkout/releases)
+    > - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/actions/checkout/compare/v5...v6)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: actions/checkout
+    >   dependency-version: '6'
+    >   dependency-type: direct:production
+    >   update-type: version-update:semver-major
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+    > Co-authored-by: Carl-Erik Kopseng <carlerik@gmail.com>
+- [`cec12da`](https://github.com/sinonjs/samsam/commit/cec12dac44c4b18a54b1efe8473270239d048c49)
+  chore(deps): bump actions/setup-node from 5 to 6 (#282) (dependabot[bot])
+    >
+    > Bumps [actions/setup-node](https://github.com/actions/setup-node) from 5 to 6.
+    > - [Release notes](https://github.com/actions/setup-node/releases)
+    > - [Commits](https://github.com/actions/setup-node/compare/v5...v6)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: actions/setup-node
+    >   dependency-version: '6'
+    >   dependency-type: direct:production
+    >   update-type: version-update:semver-major
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`bf3b202`](https://github.com/sinonjs/samsam/commit/bf3b2021f416f49f220b591c6c793a658ce9bb84)
+  chore(deps-dev): bump js-yaml (#283) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 1 update in the / directory: [js-yaml](https://github.com/nodeca/js-yaml).
+    > Updates `js-yaml` from 4.1.0 to 4.1.1
+    > - [Changelog](https://github.com/nodeca/js-yaml/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/nodeca/js-yaml/compare/4.1.0...4.1.1)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: js-yaml
+    >   dependency-version: 4.1.1
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2026-03-16._
+
 ## 9.0.2
 
 - [`1de64bb`](https://github.com/sinonjs/samsam/commit/1de64bb9c0a201d79bb0e8d8ec5887ef85fb0c89)
