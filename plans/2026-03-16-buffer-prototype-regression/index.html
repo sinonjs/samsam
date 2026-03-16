@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Buffer Prototype Regression Implementation Plan - samsam</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Buffer Prototype Regression Implementation Plan";
+        var mkdocs_page_input_path = "plans/2026-03-16-buffer-prototype-regression.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> samsam
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">samsam</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plans</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-02-deep-equal-symmetry-design/">Deep Equal Symmetry Design</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-02-deep-equal-symmetry/">Deep Equal Symmetry Implementation Plan</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Buffer Prototype Regression Implementation Plan</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#task-1-capture-the-regression">Task 1: Capture the Regression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-2-narrow-prototype-chain-key-comparison">Task 2: Narrow Prototype-Chain Key Comparison</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">samsam</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Plans</li>
+      <li class="breadcrumb-item active">Buffer Prototype Regression Implementation Plan</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sinonjs/samsam/edit/master/docs/plans/2026-03-16-buffer-prototype-regression.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="buffer-prototype-regression-implementation-plan">Buffer Prototype Regression Implementation Plan</h1>
+<blockquote>
+<p><strong>For Claude:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.</p>
+</blockquote>
+<p><strong>Goal:</strong> Restore <code>samsam.deepEqual</code> for equal <code>Buffer</code> instances without regressing the prototype-enumerable-property support added for URL-like objects.</p>
+<p><strong>Architecture:</strong> Keep prototype-chain enumerable key comparison for object-like values that rely on inherited enumerable getters, but preserve own-key semantics for array-like values such as <code>Buffer</code> and typed arrays. The fix should be limited to how <code>deepEqual</code> chooses string keys and how it verifies key presence before recursing.</p>
+<p><strong>Tech Stack:</strong> Node.js, Mocha, <code>@sinonjs/referee</code></p>
+<hr />
+<h3 id="task-1-capture-the-regression">Task 1: Capture the Regression</h3>
+<p><strong>Files:</strong>
+- Modify: <code>lib/deep-equal.test.js</code>
+- Test: <code>lib/deep-equal.test.js</code></p>
+<p><strong>Step 1: Keep the failing regression test</strong></p>
+<pre><code class="language-js">it(&quot;returns true for buffers with identical content&quot;, function () {
+    var checkDeep = samsam.deepEqual(
+        Buffer.from(&quot;Hello&quot;),
+        Buffer.from(&quot;Hello&quot;),
+    );
+    assert.isTrue(checkDeep);
+});
+</code></pre>
+<p><strong>Step 2: Run test to verify it fails</strong></p>
+<p>Run: <code>npx mocha ./lib/deep-equal.test.js --grep "returns true for buffers with identical content"</code></p>
+<p>Expected: FAIL with <code>Expected false to be true</code></p>
+<p><strong>Step 3: Commit</strong></p>
+<pre><code class="language-bash">git add lib/deep-equal.test.js
+git commit -m &quot;test: add buffer regression for deepEqual&quot;
+</code></pre>
+<h3 id="task-2-narrow-prototype-chain-key-comparison">Task 2: Narrow Prototype-Chain Key Comparison</h3>
+<p><strong>Files:</strong>
+- Modify: <code>lib/deep-equal.js</code>
+- Test: <code>lib/deep-equal.test.js</code></p>
+<p><strong>Step 1: Add a key-selection helper</strong></p>
+<pre><code class="language-js">var objectProto = require(&quot;@sinonjs/commons&quot;).prototypes.object;
+var hasOwnProperty = objectProto.hasOwnProperty;
+var keys = Object.keys;
+
+function shouldComparePrototypeEnumerableKeys(object) {
+    return !isArrayType(object) &amp;&amp; !isArguments(object);
+}
+
+function getEnumerableStringKeys(object) {
+    // Buffers and typed arrays can expose inherited enumerable accessors like
+    // `offset`; those reflect slab allocation state, not logical content.
+    return shouldComparePrototypeEnumerableKeys(object)
+        ? allEnumerableKeysInProtoChain(object)
+        : keys(object);
+}
+</code></pre>
+<p><strong>Step 2: Use the helper when building key lists</strong></p>
+<pre><code class="language-js">var actualKeys = getEnumerableStringKeys(actualObj);
+var expectationKeys = getEnumerableStringKeys(expectationObj);
+</code></pre>
+<p><strong>Step 3: Restore explicit key-presence checks before comparing values</strong></p>
+<pre><code class="language-js">return every(expectationKeysAndSymbols, function (key) {
+    if (typeof key === &quot;string&quot;) {
+        if (indexOf(actualKeys, key) === -1) {
+            return false;
+        }
+    } else if (!hasOwnProperty(actualObj, key)) {
+        return false;
+    }
+
+    var actualValue = actualObj[key];
+    var expectationValue = expectationObj[key];
+    // existing recursion logic stays unchanged
+});
+</code></pre>
+<p><strong>Step 4: Run the regression test to verify it passes</strong></p>
+<p>Run: <code>npx mocha ./lib/deep-equal.test.js --grep "returns true for buffers with identical content"</code></p>
+<p>Expected: PASS</p>
+<p><strong>Step 5: Run the nearby coverage for prototype and array behavior</strong></p>
+<p>Run: <code>npm test -- --grep "prototype|typed array|buffers with identical content"</code></p>
+<p>Expected: PASS with the URL/prototype tests still green</p>
+<p><strong>Step 6: Commit</strong></p>
+<pre><code class="language-bash">git add lib/deep-equal.js lib/deep-equal.test.js
+git commit -m &quot;fix: avoid buffer regressions in deepEqual&quot;
+</code></pre>
+<p>Commit body:</p>
+<pre><code class="language-text">The prototype-chain comparison added in 3fbe355d19bdaf9be1d5911dde8619eedac3a99e
+made deepEqual read inherited enumerable Buffer accessors such as `offset`.
+
+Two Buffer instances with identical bytes can still have different `offset`
+values because small Buffers are often views into different positions in the
+same pooled backing store. That offset is allocator metadata, not part of the
+logical buffer value.
+
+Keep prototype enumerable-key support for URL-like objects, but use own
+enumerable keys for array-like values so Buffer equality stays content-based.
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-03-02-deep-equal-symmetry/" class="btn btn-neutral float-left" title="Deep Equal Symmetry Implementation Plan"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sinonjs/samsam/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../2026-03-02-deep-equal-symmetry/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
