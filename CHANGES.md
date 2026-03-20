@@ -1,5 +1,15 @@
 # Changes
 
+## 10.0.0
+
+- [`21846c7`](https://github.com/sinonjs/samsam/commit/21846c77a48413d9a325d80ee2221fc9bbf23587)
+  ci: update test matrix to Node 22 and 24 (Morgan Roderick)
+    >
+    > Drop Node 20 which reaches EOL on April 30, 2026.
+    >
+
+_Released by Morgan Roderick on 2026-03-20._
+
 ## 9.0.3
 
 - [`b415496`](https://github.com/sinonjs/samsam/commit/b41549625ff00c34d00886148d8e3d89fd1a86c4)
@@ -369,7 +379,8 @@ _Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2025-07-25._
   Fix low-hanging 'npm audit' fruits (Carl-Erik Kopseng)
 - [`a3cdefa`](https://github.com/sinonjs/samsam/commit/a3cdefa75148838c7c720379711734835e964352)
   Bump elliptic from 6.5.4 to 6.5.7 (#248) (dependabot[bot])
-    > Signed-off-by: dependabot[bot] <support@github.com>    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    >
     > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
 - [`47e4b73`](https://github.com/sinonjs/samsam/commit/47e4b73beaac88b70a4613d9d3f7996b52792d22)
   Bump browserify-sign from 4.2.1 to 4.2.3 (#249) (dependabot[bot])
