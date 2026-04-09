@@ -2,10 +2,10 @@
   "include": ["lib/*.js"],
   "exclude": ["lib/*.test.js"],
   "compilerOptions": {
+    "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "allowJs": true,
-    "rootDir": ".",
+    "rootDir": "lib",
     "outDir": "types"
   }
 }

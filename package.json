@@ -22,7 +22,8 @@
   },
   "scripts": {
     "benchmark": "node lib/deep-equal-benchmark.js",
-    "build": "rm -rf types && tsgo",
+    "prebuild": "rm -rf types",
+    "build": "tsgo",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "lint": "eslint .",
     "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
