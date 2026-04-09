@@ -1,5 +1,87 @@
 # Changes
 
+## 10.0.1
+
+Mainly a bunch of patch updates to dependencies and a fix of the build pipeline,
+as tests in sauce-labs broke
+
+- [`1dc33b2`](https://github.com/sinonjs/samsam/commit/1dc33b2143814c8a186ff87a3f3fb357d7096dc1)
+  Fix type generation using new compiler (Carl-Erik Kopseng)
+- [`ab5b5df`](https://github.com/sinonjs/samsam/commit/ab5b5df0c0174aff8fe6088213b194a40d9128a3)
+  chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates (#299) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 3 updates in the / directory: [basic-ftp](https://github.com/patrickjuchli/basic-ftp), [lodash](https://github.com/lodash/lodash) and [picomatch](https://github.com/micromatch/picomatch).
+    > Updates `basic-ftp` from 5.2.0 to 5.2.1
+    > - [Release notes](https://github.com/patrickjuchli/basic-ftp/releases)
+    > - [Changelog](https://github.com/patrickjuchli/basic-ftp/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/patrickjuchli/basic-ftp/compare/v5.2.0...v5.2.1)
+    >
+    > Updates `lodash` from 4.17.23 to 4.18.1
+    > - [Release notes](https://github.com/lodash/lodash/releases)
+    > - [Commits](https://github.com/lodash/lodash/compare/4.17.23...4.18.1)
+    >
+    > Updates `picomatch` from 4.0.3 to 4.0.4
+    > - [Release notes](https://github.com/micromatch/picomatch/releases)
+    > - [Changelog](https://github.com/micromatch/picomatch/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/micromatch/picomatch/compare/4.0.3...4.0.4)
+- [`0c40487`](https://github.com/sinonjs/samsam/commit/0c40487348d11cc1d08f8c651faad82966694f05)
+  Upgrade Typescript to preview of v7 (Carl-Erik Kopseng)
+- [`24b6c0e`](https://github.com/sinonjs/samsam/commit/24b6c0e0859baaa1eb96bbdfadc148b492f2895c)
+  Fix SauceLabs failure in Edge (Carl-Erik Kopseng)
+- [`d1c4342`](https://github.com/sinonjs/samsam/commit/d1c43423c4d9f23e14946551405848a8378bd958)
+  chore(deps-dev): bump the npm_and_yarn group across 1 directory with 2 updates (#295) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 2 updates in the / directory: [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) and [flatted](https://github.com/WebReflection/flatted).
+    > Updates `fast-xml-parser` from 5.4.2 to 5.5.8
+    > - [Release notes](https://github.com/NaturalIntelligence/fast-xml-parser/releases)
+    > - [Changelog](https://github.com/NaturalIntelligence/fast-xml-parser/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/NaturalIntelligence/fast-xml-parser/compare/v5.4.2...v5.5.8)
+    >
+    > Updates `flatted` from 3.3.3 to 3.4.2
+    > - [Commits](https://github.com/WebReflection/flatted/compare/v3.3.3...v3.4.2)
+- [`cf9b1e0`](https://github.com/sinonjs/samsam/commit/cf9b1e068d5aaceeb8b53d57102aba3144da8df2)
+  chore(deps-dev): bump esbuild from 0.27.3 to 0.27.4 (#296) (dependabot[bot])
+    >
+    > Bumps [esbuild](https://github.com/evanw/esbuild) from 0.27.3 to 0.27.4.
+- [`54f9c0f`](https://github.com/sinonjs/samsam/commit/54f9c0fc2699c8022ef4d25fc90c5e19adc49920)
+  chore(deps): bump codecov/codecov-action from 5 to 6 (#298) (dependabot[bot])
+    >
+    > Bumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 5 to 6.
+    > - [Release notes](https://github.com/codecov/codecov-action/releases)
+    > - [Changelog](https://github.com/codecov/codecov-action/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/codecov/codecov-action/compare/v5...v6)
+- [`7e237f6`](https://github.com/sinonjs/samsam/commit/7e237f659dac96dbe10fa28e131c7a2f41e1547e)
+  Fix SauceLabs failure in Edge (Carl-Erik Kopseng)
+- [`e03027e`](https://github.com/sinonjs/samsam/commit/e03027e19769983216f5834ebe4ef8cc27bbca5b)
+  chore(deps-dev): bump jsdom from 28.1.0 to 29.0.0 (#293) (dependabot[bot])
+    >
+    > Bumps [jsdom](https://github.com/jsdom/jsdom) from 28.1.0 to 29.0.0.
+    > - [Release notes](https://github.com/jsdom/jsdom/releases)
+    > - [Changelog](https://github.com/jsdom/jsdom/blob/v29.0.0/Changelog.md)
+    > - [Commits](https://github.com/jsdom/jsdom/compare/v28.1.0...v29.0.0)
+    >
+- [`8274e17`](https://github.com/sinonjs/samsam/commit/8274e17143286877395199bce74a339c31b2aeb8)
+  chore(deps-dev): bump lint-staged from 16.3.2 to 16.4.0 (#292) (dependabot[bot])
+    >
+    > Bumps [lint-staged](https://github.com/lint-staged/lint-staged) from 16.3.2 to 16.4.0.
+    > - [Release notes](https://github.com/lint-staged/lint-staged/releases)
+    > - [Changelog](https://github.com/lint-staged/lint-staged/blob/main/CHANGELOG.md)
+    > - [Commits](https://github.com/lint-staged/lint-staged/compare/v16.3.2...v16.4.0)
+    >
+- [`c3e2f6a`](https://github.com/sinonjs/samsam/commit/c3e2f6a6196acd5a8c3ab90931634318f8bcd349)
+  chore(deps): bump the npm_and_yarn group across 1 directory with 1 update (#290) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 1 update in the / directory: [undici](https://github.com/nodejs/undici).
+    > Updates `undici` from 6.21.3 to 6.24.1
+    > - [Release notes](https://github.com/nodejs/undici/releases)
+    > - [Commits](https://github.com/nodejs/undici/compare/v6.21.3...v6.24.1)
+    >
+    > Updates `undici` from 7.22.0 to 7.24.4
+    > - [Release notes](https://github.com/nodejs/undici/releases)
+    > - [Commits](https://github.com/nodejs/undici/compare/v6.21.3...v6.24.1)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2026-04-09._
+
 ## 10.0.0
 
 - [`21846c7`](https://github.com/sinonjs/samsam/commit/21846c77a48413d9a325d80ee2221fc9bbf23587)
