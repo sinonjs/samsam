@@ -26,7 +26,7 @@
     "build": "tsgo",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
+    "prepublishOnly": "npm run build && npm run test-cloud && mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha ./lib/*.test.js",
     "test-cloud": "./test-cloud.sh",
     "test-check-coverage": "c8 --all --reporter text --reporter html --reporter lcovonly --check-coverage --branches 100 --functions 100 --lines 100 npm run test",
