@@ -1,5 +1,41 @@
 # Changes
 
+## 10.0.2
+
+- [`ef34e14`](https://github.com/sinonjs/samsam/commit/ef34e1405f3682c7e48130ea2bd0b76b683ded92)
+  chore(deps): bump basic-ftp in the npm_and_yarn group across 1 directory (#300) (dependabot[bot])
+    >
+    > Bumps the npm_and_yarn group with 1 update in the / directory: [basic-ftp](https://github.com/patrickjuchli/basic-ftp).
+    > Updates `basic-ftp` from 5.2.1 to 5.2.2
+    > - [Release notes](https://github.com/patrickjuchli/basic-ftp/releases)
+    > - [Changelog](https://github.com/patrickjuchli/basic-ftp/blob/master/CHANGELOG.md)
+    > - [Commits](https://github.com/patrickjuchli/basic-ftp/compare/v5.2.1...v5.2.2)
+    >
+    > ---
+    > updated-dependencies:
+    > - dependency-name: basic-ftp
+    >   dependency-version: 5.2.2
+    >   dependency-type: indirect
+    >   dependency-group: npm_and_yarn
+    > ...
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`54fb61b`](https://github.com/sinonjs/samsam/commit/54fb61b5db6d177c312b9fde820f7bd6c1839098)
+  upgrade eslint (#301) (Carl-Erik Kopseng)
+    >
+    > * Update shared eslint config
+    >
+    > * Upgrade to breaking ESLint 10 and new shared config
+    >
+    > * upgrade coverage conf
+    >
+    > * fix lock file
+- [`77a1167`](https://github.com/sinonjs/samsam/commit/77a1167715a73b820a488749e06a31703826c41b)
+  include Sauce Labs test runs in the publishing pipeline (Carl-Erik Kopseng)
+
+_Released by [Carl-Erik Kopseng](https://github.com/fatso83) on 2026-04-11._
+
 ## 10.0.1
 
 Mainly a bunch of patch updates to dependencies and a fix of the build pipeline,
