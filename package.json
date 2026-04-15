@@ -60,7 +60,7 @@
     "@sinonjs/eslint-config": "^7.0.2",
     "@sinonjs/eslint-plugin-no-prototype-methods": "^0.1.1",
     "eslint": "^10.2.0",
-    "@sinonjs/referee": "^11.0.1",
+    "@sinonjs/referee": "^11.0.2",
     "@studio/changes": "^3.0.0",
     "@typescript/native-preview": "7.0.0-dev.20260401.1",
     "benchmark": "^2.1.4",
