@@ -95,8 +95,182 @@ jobs:
         run: |
           npm run test-cloud
 
+  browser-test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        browser: [MicrosoftEdge, chrome, firefox]
+
+    env:
+      BROWSER_NAME: ${{ matrix.browser }}
+      WEBDRIVER_PORT: 4444
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+      - name: Install dependencies
+        run: |
+          npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 1
+      # The runner image can be a release behind, so each job installs the
+      # vendor's current stable browser. Chrome and Edge need a driver of the
+      # same version; Firefox works with the image's geckodriver.
+      - name: Install latest stable browser (Linux)
+        if: ${{ runner.os == 'Linux' }}
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP"
+          case "$BROWSER_NAME" in
+            chrome)
+              curl -fsSLo chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+              sudo apt-get install -y --allow-downgrades ./chrome.deb
+              version=$(google-chrome --version | grep -oE "[0-9]+(\.[0-9]+){3}")
+              cft=https://googlechromelabs.github.io/chrome-for-testing
+              driver_version=$(curl -fsS "$cft/LATEST_RELEASE_${version%.*}")
+              curl -fsSLo chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/$driver_version/linux64/chromedriver-linux64.zip"
+              unzip -q chromedriver.zip
+              echo "$RUNNER_TEMP/chromedriver-linux64" >> "$GITHUB_PATH"
+              ;;
+            MicrosoftEdge)
+              echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/repos/edge stable main" \
+                | sudo tee /etc/apt/sources.list.d/microsoft-edge.list
+              sudo apt-get update -o Dir::Etc::sourcelist=sources.list.d/microsoft-edge.list -o Dir::Etc::sourceparts=-
+              sudo apt-get install -y --allow-downgrades microsoft-edge-stable
+              # Edge refuses to start without a setuid sandbox helper.
+              sudo chown root:root /opt/microsoft/msedge/msedge-sandbox
+              sudo chmod 4755 /opt/microsoft/msedge/msedge-sandbox
+              version=$(microsoft-edge --version | grep -oE "[0-9]+(\.[0-9]+){3}")
+              curl -fsSLo edgedriver.zip "https://msedgedriver.microsoft.com/$version/edgedriver_linux64.zip"
+              mkdir edgedriver
+              unzip -q edgedriver.zip -d edgedriver
+              echo "$RUNNER_TEMP/edgedriver" >> "$GITHUB_PATH"
+              ;;
+            firefox)
+              curl -fsSL "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -xJ
+              version=$(firefox/firefox --version | grep -oE "[0-9]+(\.[0-9]+)+")
+              echo "$RUNNER_TEMP/firefox" >> "$GITHUB_PATH"
+              ;;
+          esac
+          echo "BROWSER_VERSION=$version" >> "$GITHUB_ENV"
+      - name: Install latest stable browser (Windows)
+        if: ${{ runner.os == 'Windows' }}
+        shell: pwsh
+        run: |
+          $ProgressPreference = "SilentlyContinue"
+          Set-Location $env:RUNNER_TEMP
+          function Invoke-Installer($file, $arguments) {
+            $process = Start-Process $file -ArgumentList $arguments -Wait -PassThru
+            if ($process.ExitCode -notin 0, 3010) {
+              throw "$file exited with code $($process.ExitCode)"
+            }
+          }
+          switch ($env:BROWSER_NAME) {
+            "chrome" {
+              Invoke-WebRequest "https://dl.google.com/chrome/install/googlechromestandaloneenterprise64.msi" -OutFile chrome.msi
+              Invoke-Installer msiexec.exe "/i chrome.msi /qn /norestart"
+              $version = (Get-Item "$env:ProgramFiles\Google\Chrome\Application\chrome.exe").VersionInfo.ProductVersion
+              $build = $version.Substring(0, $version.LastIndexOf("."))
+              $cft = "https://googlechromelabs.github.io/chrome-for-testing"
+              $driverVersion = (Invoke-RestMethod "$cft/LATEST_RELEASE_$build").Trim()
+              Invoke-WebRequest "https://storage.googleapis.com/chrome-for-testing-public/$driverVersion/win64/chromedriver-win64.zip" -OutFile chromedriver.zip
+              Expand-Archive chromedriver.zip -DestinationPath .
+              Add-Content $env:GITHUB_PATH "$env:RUNNER_TEMP\chromedriver-win64"
+            }
+            "MicrosoftEdge" {
+              # Store the response first, so the filter sees each product, not the whole array.
+              $products = Invoke-RestMethod "https://edgeupdates.microsoft.com/api/products"
+              $release = ($products | Where-Object Product -eq "Stable").Releases |
+                Where-Object { $_.Platform -eq "Windows" -and $_.Architecture -eq "x64" } |
+                Sort-Object { [version]$_.ProductVersion } -Descending |
+                Select-Object -First 1
+              $msi = $release.Artifacts | Where-Object ArtifactName -eq "msi"
+              Invoke-WebRequest $msi.Location -OutFile edge.msi
+              Invoke-Installer msiexec.exe "/i edge.msi /qn /norestart"
+              $version = $release.ProductVersion
+              Invoke-WebRequest "https://msedgedriver.microsoft.com/$version/edgedriver_win64.zip" -OutFile edgedriver.zip
+              Expand-Archive edgedriver.zip -DestinationPath edgedriver
+              Add-Content $env:GITHUB_PATH "$env:RUNNER_TEMP\edgedriver"
+            }
+            "firefox" {
+              Invoke-WebRequest "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US" -OutFile firefox.exe
+              Invoke-Installer .\firefox.exe "/S"
+              $version = (Get-Item "$env:ProgramFiles\Mozilla Firefox\firefox.exe").VersionInfo.ProductVersion
+            }
+          }
+          Add-Content $env:GITHUB_ENV "BROWSER_VERSION=$version"
+      - name: Start WebDriver
+        shell: bash
+        run: |
+          case "$BROWSER_NAME" in
+            chrome) driver=(chromedriver --enable-chrome-logs) ;;
+            MicrosoftEdge) driver=(msedgedriver --enable-chrome-logs) ;;
+            firefox) driver=(geckodriver) ;;
+          esac
+          if [ "$RUNNER_OS" = "Linux" ]; then
+            # Run the browser with a window, on a virtual display.
+            driver=(xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" "${driver[@]}")
+          fi
+          "${driver[@]}" --port="$WEBDRIVER_PORT" > "$RUNNER_TEMP/webdriver.log" 2>&1 &
+          for _ in $(seq 30); do
+            if curl -sf "http://localhost:$WEBDRIVER_PORT/status" > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "WebDriver did not start"
+          cat "$RUNNER_TEMP/webdriver.log"
+          exit 1
+      - name: Check browser version
+        shell: bash
+        run: |
+          node --input-type=module -e '
+            const url = `http://localhost:${process.env.WEBDRIVER_PORT}/session`;
+            const response = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                capabilities: { alwaysMatch: { browserName: process.env.BROWSER_NAME } },
+              }),
+            });
+            const { value } = await response.json();
+            if (!value.sessionId) {
+              throw new Error(value.message);
+            }
+            const { browserName, browserVersion, platformName } = value.capabilities;
+            console.log(`${browserName} ${browserVersion} on ${platformName}`);
+            await fetch(`${url}/${value.sessionId}`, { method: "DELETE" });
+            if (browserVersion !== process.env.BROWSER_VERSION) {
+              throw new Error(`Expected version ${process.env.BROWSER_VERSION}`);
+            }
+          '
+      - name: Browser test
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            # Mochify writes the spec paths into require() calls for the
+            # bundler, and Windows path separators break them. File names
+            # without a directory avoid that.
+            cd lib
+            npx mochify -C ../mochify.webdriver-local.cjs "*.test.js"
+          else
+            npx mochify -C mochify.webdriver-local.cjs
+          fi
+      - name: Show WebDriver log
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          cat "$RUNNER_TEMP/webdriver.log"
+
   dependabot-automerge:
-    needs: [static-analysis, coverage, test, saucelabs-test]
+    needs: [static-analysis, coverage, test, browser-test]
     if: >
       github.event_name == 'pull_request' &&
       github.event.pull_request.user.login == 'dependabot[bot]'
