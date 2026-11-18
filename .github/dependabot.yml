@@ -6,8 +6,13 @@ updates:
     schedule:
       interval: "monthly"
       time: "00:00" # UTC
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 10
     versioning-strategy: increase
+    groups:
+      # @mochify packages peer dependency each other, so upgrade them together.
+      mochify:
+        patterns:
+          - "@mochify/*"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -25,7 +30,7 @@ updates:
     schedule:
       interval: "monthly"
       time: "01:00"
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 10
 
     commit-message:
       prefix: "chore"
